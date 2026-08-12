@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Demyan PC Service — ремонт и обслуживание компьютеров, ноутбуков и электроники в Волошино и рядом.">
+<title>Demyan PC Service — ремонт техники</title>
+<style>
+:root{--bg:#070a10;--panel:#101722;--panel2:#151e2c;--text:#f4f7fb;--muted:#9caabd;--accent:#48a8ff;--accent2:#7c5cff;--line:#ffffff12}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 80% 0,#15325a 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#070a10cc;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav{height:70px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;letter-spacing:.8px;font-size:19px}.logo span{color:var(--accent)}
+nav .links{display:flex;gap:24px;color:var(--muted);font-size:14px}
+nav .links a:hover{color:white}
+.hero{padding:90px 0 70px;display:grid;grid-template-columns:1.1fr .9fr;gap:45px;align-items:center}
+.eyebrow{color:#7fc6ff;font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:12px}
+h1{font-size:clamp(42px,6vw,72px);line-height:.98;margin:16px 0}
+.hero p{color:var(--muted);font-size:18px;line-height:1.65;max-width:650px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{padding:14px 20px;border-radius:13px;font-weight:800;border:1px solid var(--line);display:inline-block}
+.primary{background:linear-gradient(135deg,var(--accent),#2875ff);color:white}
+.secondary{background:#ffffff08}
+.visual{min-height:380px;border-radius:30px;background:linear-gradient(145deg,#172a44,#0d131e);border:1px solid var(--line);box-shadow:0 30px 80px #0008;position:relative;overflow:hidden;padding:28px}
+.visual:before{content:"";position:absolute;width:270px;height:270px;border-radius:50%;right:-70px;top:-80px;background:#4ca9ff20;filter:blur(5px)}
+.pc{position:absolute;inset:70px 35px 35px;background:#090d14;border:1px solid #ffffff18;border-radius:22px;padding:20px}
+.pc .bar{height:9px;width:75%;border-radius:20px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.pc .line{height:12px;background:#ffffff0b;border-radius:10px;margin-top:20px}
+section{padding:75px 0}
+.section-title{text-align:center;font-size:34px;margin:0 0 12px}
+.subtitle{text-align:center;color:var(--muted);margin:0 auto 40px;max-width:650px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:linear-gradient(145deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:20px;padding:24px}
+.icon{font-size:28px}.card h3{margin:13px 0 8px}.card p{color:var(--muted);line-height:1.55;margin:0}
+.price{font-size:20px;color:#8dccff;font-weight:900;margin-top:16px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.contact{background:linear-gradient(135deg,#10243d,#12192a);border:1px solid #ffffff15;border-radius:28px;padding:40px;text-align:center}
+.contact p{color:var(--muted);line-height:1.6}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13px}
+@media(max-width:800px){nav .links{display:none}.hero,.about{grid-template-columns:1fr}.hero{padding-top:55px}.grid{grid-template-columns:1fr}.visual{min-height:300px}}
+</style>
+</head>
+<body>
+<header>
+<div class="container"><nav>
+<a class="logo" href="#">DEMYAN <span>PC SERVICE</span></a>
+<div class="links"><a href="#services">Услуги</a><a href="#about">О мастере</a><a href="#contact">Контакты</a></div>
+</nav></div>
+</header>
+
+<main>
+<section class="hero container">
+<div>
+<div class="eyebrow">Волошино и рядом</div>
+<h1>Техника должна<br><span style="color:#54b4ff">работать.</span></h1>
+<p>Ремонт и обслуживание компьютеров, ноутбуков и другой электроники. Аккуратно, без спешки и с диагностикой перед ремонтом.</p>
+<div class="buttons">
+<a class="btn primary" href="#contact">Обратиться</a>
+<a class="btn secondary" href="#services">Посмотреть услуги</a>
+</div>
+</div>
+<div class="visual" aria-label="Декоративная иллюстрация компьютера">
+<div class="pc"><div class="bar"></div><div class="line"></div><div class="line" style="width:55%"></div><div class="line" style="width:82%"></div></div>
+</div>
+</section>
+
+<section id="services">
+<div class="container">
+<h2 class="section-title">Услуги</h2>
+<p class="subtitle">Помощь с компьютерами, ноутбуками и настройкой техники.</p>
+<div class="grid">
+<div class="card"><div class="icon">🧹</div><h3>Чистка и охлаждение</h3><p>Удаление пыли, обслуживание системы охлаждения и замена термопасты.</p></div>
+<div class="card"><div class="icon">💾</div><h3>Windows и программы</h3><p>Переустановка системы, установка программ и настройка рабочего окружения.</p></div>
+<div class="card"><div class="icon">🦠</div><h3>Вирусы</h3><p>Поиск и удаление нежелательных и вредоносных программ.</p></div>
+<div class="card"><div class="icon">⚙️</div><h3>Комплектующие</h3><p>Установка и замена оперативной памяти, накопителей и других деталей.</p></div>
+<div class="card"><div class="icon">🖥️</div><h3>Сборка ПК</h3><p>Подбор комплектующих и сборка компьютера под задачи и бюджет.</p></div>
+<div class="card"><div class="icon">🔍</div><h3>Диагностика</h3><p>Поиск причины неисправности перед ремонтом.</p><div class="price">БЕСПЛАТНО</div></div>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="container about">
+<div class="card"><h2>О мастере</h2><p>Меня зовут Демьян. Занимаюсь ремонтом и обслуживанием компьютеров, ноутбуков и электроники. Работаю аккуратно и стараюсь найти именно причину проблемы.</p></div>
+<div class="card"><h2>Как проходит ремонт</h2><p>1. Вы рассказываете о проблеме.<br>2. Проводится диагностика.<br>3. Согласовываются работы и стоимость.<br>4. Выполняется ремонт и проверка техники.</p></div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<div class="contact">
+<h2>Нужна помощь с техникой?</h2>
+<p>Напишите мне удобным способом или договоритесь о встрече. Выезд по селу — по договорённости.</p>
+<div class="buttons" style="justify-content:center">
+<a class="btn primary" href="tel:+79094134741">📞 Позвонить</a>
+<a class="btn secondary" href="mailto:demyan.pc.service@example.com">✉️ Написать</a>
+</div>
+<p style="font-size:12px;margin-top:20px">Телефон для связи указан выше.</p>
+</div>
+</div>
+</section>
+</main>
+
+<footer><div class="container">© 2026 Demyan PC Service · Волошино и рядом</div></footer>
+</body>
+</html>
