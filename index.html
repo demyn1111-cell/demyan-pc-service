@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Demyan PC Service — ремонт и настройка ПК</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #080b12;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* ШАПКА */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 11, 18, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #202735;
+    }
+
+    nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #00aaff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #cbd2df;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #00aaff;
+    }
+
+    /* ГЛАВНЫЙ ЭКРАН */
+
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 80% 30%, rgba(0,170,255,.18), transparent 35%),
+        radial-gradient(circle at 20% 80%, rgba(70,0,255,.12), transparent 35%);
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid #174d72;
+      border-radius: 30px;
+      color: #5dc7ff;
+      background: rgba(0,170,255,.08);
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+      margin-bottom: 25px;
+    }
+
+    h1 span {
+      color: #00aaff;
+    }
+
+    .hero p {
+      color: #aeb7c7;
+      font-size: 19px;
+      max-width: 620px;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: .2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #00aaff;
+      color: #00121c;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,170,255,.25);
+    }
+
+    .btn-secondary {
+      border: 1px solid #303949;
+      color: white;
+      background: #111621;
+    }
+
+    .btn-secondary:hover {
+      border-color: #00aaff;
+    }
+
+    /* СЕКЦИИ */
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #8f99aa;
+    }
+
+    /* УСЛУГИ */
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #10151f;
+      border: 1px solid #222b3a;
+      border-radius: 18px;
+      padding: 28px;
+      transition: .25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #008dcc;
+      box-shadow: 0 15px 40px rgba(0,0,0,.25);
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #929caf;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      color: #00aaff;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* ПОЧЕМУ МЫ */
+
+    .advantages {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .advantage {
+      text-align: center;
+      padding: 25px 15px;
+      background: #0e131c;
+      border-radius: 16px;
+      border: 1px solid #202938;
+    }
+
+    .advantage strong {
+      display: block;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .advantage span {
+      color: #8993a5;
+      font-size: 14px;
+    }
+
+    /* КОНТАКТЫ */
+
+    .contact-box {
+      background:
+        linear-gradient(135deg, rgba(0,170,255,.15), rgba(0,0,0,0)),
+        #10151f;
+      border: 1px solid #26364a;
+      border-radius: 25px;
+      padding: 50px;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      color: #a5afbf;
+      margin-bottom: 25px;
+    }
+
+    .phone {
+      display: block;
+      font-size: 28px;
+      font-weight: bold;
+      color: #00aaff;
+      margin-bottom: 25px;
+    }
+
+    /* ФУТЕР */
+
+    footer {
+      border-top: 1px solid #202735;
+      padding: 30px 0;
+      text-align: center;
+      color: #70798a;
+    }
+
+    /* МОБИЛЬНАЯ ВЕРСИЯ */
+
+    @media (max-width: 800px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 580px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .advantages {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-box {
+        padding: 35px 20px;
+      }
+
+      .contact-box h2 {
+        font-size: 30px;
+      }
+
+      .phone {
+        font-size: 23px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .advantages {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ШАПКА -->
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">
+          Demyan <span>PC</span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#about">Преимущества</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- ГЛАВНЫЙ ЭКРАН -->
+
+  <main>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+
+          <div class="badge">
+            ⚡ ПК-сервис рядом с вами
+          </div>
+
+          <h1>
+            Ремонт и настройка<br>
+            <span>компьютеров</span>
+          </h1>
+
+          <p>
+            Помогу собрать, настроить и обслужить игровой или рабочий ПК.
+            Установка Windows, чистка, диагностика, апгрейд и многое другое.
+          </p>
+
+          <div class="buttons">
+            <a href="#contacts" class="btn btn-primary">
+              Связаться со мной
+            </a>
+
+            <a href="#services" class="btn btn-secondary">
+              Посмотреть услуги
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- УСЛУГИ -->
+
+    <section id="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Услуги</h2>
+          <p>Основные услуги ПК-сервиса</p>
+        </div>
+
+        <div class="services">
+
+          <div class="card">
+            <div class="icon">🛠️</div>
+            <h3>Диагностика ПК</h3>
+            <p>
+              Проверка комплектующих, температур,
+              накопителей и общей работоспособности компьютера.
+            </p>
+            <div class="price">от 300 ₽</div>
+          </div>
+
+          <div class="card">
+            <div class="icon">🧹</div>
+            <h3>Чистка ПК</h3>
+            <p>
+              Очистка компьютера от пыли и проверка
+              системы охлаждения.
+            </p>
+            <div class="price">от 500 ₽</div>
+          </div>
+
+          <div class="card">
+            <div class="icon">💻</div>
+            <h3>Установка Windows</h3>
+            <p>
+              Установка и базовая настройка операционной
+              системы и необходимых драйверов.
+            </p>
+            <div class="price">от 700 ₽</div>
+          </div>
+
+          <div class="card">
+            <div class="icon">🚀</div>
+            <h3>Ускорение ПК</h3>
+            <p>
+              Оптимизация системы, автозагрузки,
+              настроек и устранение лишнего.
+            </p>
+            <div class="price">от 500 ₽</div>
+          </div>
+
+          <div class="card">
+            <div class="icon">🎮</div>
+            <h3>Игровая настройка</h3>
+            <p>
+              Настройка игр и графики для более
+              стабильного FPS.
+            </p>
+            <div class="price">от 500 ₽</div>
+          </div>
+
+          <div class="card">
+            <div class="icon">🔧</div>
+            <h3>Апгрейд ПК</h3>
+            <p>
+              Помощь с выбором комплектующих и
+              установкой новых деталей.
+            </p>
+            <div class="price">от 500 ₽</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ПРЕИМУЩЕСТВА -->
+
+    <section id="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Почему стоит обратиться?</h2>
+          <p>Просто, понятно и без лишней воды</p>
+        </div>
+
+        <div class="advantages">
+
+          <div class="advantage">
+            <div style="font-size:35px">💰</div>
+            <strong>Адекватные цены</strong>
+            <span>Без ненужных услуг</span>
+          </div>
+
+          <div class="advantage">
+            <div style="font-size:35px">⚡</div>
+            <strong>Быстро</strong>
+            <span>Стараемся не затягивать</span>
+          </div>
+
+          <div class="advantage">
+            <div style="font-size:35px">🔍</div>
+            <strong>Диагностика</strong>
+            <span>Сначала ищем проблему</span>
+          </div>
+
+          <div class="advantage">
+            <div style="font-size:35px">🎮</div>
+            <strong>Для геймеров</strong>
+            <span>Помощь с игровыми ПК</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- КОНТАКТЫ -->
+
+    <section id="contacts">
+      <div class="container">
+
+        <div class="contact-box">
+
+          <h2>Нужна помощь с ПК?</h2>
+
+          <p>
+            Напиши или позвони — расскажи, что случилось
+            с компьютером.
+          </p>
+
+          <a class="phone" href="tel:+79094134741">
+            +7 909 413-47-41
+          </a>
+
+          <a
+            href="tel:+79094134741"
+            class="btn btn-primary"
+          >
+            📞 Позвонить
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ФУТЕР -->
+
+  <footer>
+    <div class="container">
+      © 2026 Demyan PC Service
+    </div>
+  </footer>
+
+</body>
+  </html>
