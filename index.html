@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Demyan PC — Ремонт компьютеров</title>
 
 <style>
@@ -12,21 +13,27 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
     background: #050912;
-    color: #fff;
+    color: #ffffff;
     line-height: 1.6;
 }
 
+/* HEADER */
+
 header {
-    padding: 22px 7%;
+    padding: 20px 7%;
     border-bottom: 1px solid #172033;
     position: sticky;
     top: 0;
-    background: rgba(5,9,18,.92);
-    backdrop-filter: blur(10px);
-    z-index: 10;
+    background: rgba(5, 9, 18, 0.95);
+    backdrop-filter: blur(12px);
+    z-index: 100;
 }
 
 .logo {
@@ -38,14 +45,25 @@ header {
     color: #00aaff;
 }
 
+/* HERO */
+
 .hero {
-    min-height: 650px;
+    min-height: 680px;
     padding: 90px 7%;
     display: flex;
     align-items: center;
+
     background:
-        radial-gradient(circle at 80% 40%, #063b61 0, transparent 35%),
-        radial-gradient(circle at 20% 80%, #171052 0, transparent 30%);
+        radial-gradient(
+            circle at 80% 40%,
+            #063b61 0,
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            #171052 0,
+            transparent 30%
+        );
 }
 
 .badge {
@@ -55,12 +73,13 @@ header {
     border-radius: 30px;
     color: #56c7ff;
     margin-bottom: 25px;
+    background: #061323;
 }
 
 h1 {
     font-size: clamp(48px, 8vw, 82px);
     line-height: 1.05;
-    max-width: 850px;
+    max-width: 900px;
 }
 
 .blue {
@@ -70,7 +89,7 @@ h1 {
 .hero p {
     color: #aeb9cc;
     font-size: 21px;
-    max-width: 750px;
+    max-width: 760px;
     margin: 28px 0;
 }
 
@@ -87,7 +106,7 @@ h1 {
     text-decoration: none;
     font-weight: bold;
     font-size: 17px;
-    transition: .2s;
+    transition: 0.2s;
 }
 
 .btn-main {
@@ -106,6 +125,12 @@ h1 {
     background: #0c1220;
 }
 
+.btn-dark:hover {
+    border-color: #00aaff;
+}
+
+/* SECTIONS */
+
 section {
     padding: 80px 7%;
 }
@@ -119,6 +144,8 @@ section {
     color: #00aaff;
 }
 
+/* EXPERIENCE */
+
 .experience {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -126,21 +153,35 @@ section {
 }
 
 .info-card {
-    background: #0b1220;
-    border: 1px solid #18263c;
-    padding: 30px;
+    background: linear-gradient(145deg, #0d1524, #080d17);
+    border: 1px solid #1b2b43;
     border-radius: 22px;
+    padding: 30px;
+    transition: 0.25s;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    border-color: #00aaff;
 }
 
 .info-card strong {
     display: block;
     font-size: 38px;
     color: #00aaff;
+    margin-bottom: 5px;
+}
+
+.info-card h3 {
+    font-size: 23px;
+    margin-bottom: 8px;
 }
 
 .info-card p {
     color: #9ba8bb;
 }
+
+/* SERVICES */
 
 .services {
     display: grid;
@@ -153,7 +194,7 @@ section {
     border: 1px solid #1b2b43;
     border-radius: 22px;
     padding: 30px;
-    transition: .25s;
+    transition: 0.25s;
 }
 
 .card:hover {
@@ -176,11 +217,13 @@ section {
 }
 
 .price {
-    margin-top: 20px;
+    margin-top: 18px;
     font-size: 25px;
     font-weight: bold;
     color: #00aaff;
 }
+
+/* GAMING PCS */
 
 .gaming {
     background: #070d18;
@@ -197,48 +240,19 @@ section {
     border-radius: 24px;
     background: #0d1523;
     border: 1px solid #1b2b43;
+    transition: 0.25s;
 }
 
-.pc-art {
+.pc:hover {
+    transform: translateY(-6px);
+    border-color: #00aaff;
+}
+
+.pc-img {
+    width: 100%;
     height: 230px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background:
-        radial-gradient(circle, #0077bb55, transparent 45%),
-        #070b12;
-}
-
-.pc-case {
-    width: 150px;
-    height: 180px;
-    border: 3px solid #34445b;
-    border-radius: 12px;
-    background: #090d14;
-    box-shadow: 0 0 35px #00aaff44;
-    position: relative;
-}
-
-.fan {
-    width: 45px;
-    height: 45px;
-    border: 5px solid #00aaff;
-    border-radius: 50%;
-    position: absolute;
-    right: 15px;
-    box-shadow: 0 0 18px #00aaff;
-}
-
-.fan:nth-child(1) {
-    top: 20px;
-}
-
-.fan:nth-child(2) {
-    top: 70px;
-}
-
-.fan:nth-child(3) {
-    top: 120px;
+    object-fit: cover;
+    display: block;
 }
 
 .pc-info {
@@ -247,16 +261,24 @@ section {
 
 .pc-info h3 {
     font-size: 23px;
+    margin-bottom: 8px;
 }
 
 .pc-info p {
     color: #9ba8bb;
 }
 
+/* CONTACT */
+
 .contact {
     text-align: center;
+
     background:
-        radial-gradient(circle at center, #07385a, transparent 45%);
+        radial-gradient(
+            circle at center,
+            #07385a,
+            transparent 45%
+        );
 }
 
 .contact p {
@@ -265,6 +287,8 @@ section {
     max-width: 600px;
 }
 
+/* FOOTER */
+
 footer {
     text-align: center;
     padding: 30px;
@@ -272,7 +296,10 @@ footer {
     color: #69778c;
 }
 
+/* MOBILE */
+
 @media (max-width: 800px) {
+
     .experience,
     .services,
     .pcs {
@@ -280,7 +307,8 @@ footer {
     }
 
     .hero {
-        padding-top: 60px;
+        min-height: 600px;
+        padding: 60px 5%;
     }
 
     .hero p {
@@ -290,19 +318,42 @@ footer {
     section {
         padding: 60px 5%;
     }
+
+    .section-title {
+        font-size: 34px;
+    }
+
+    header {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
-    <div class="logo">Demyan <span>PC</span></div>
+    <div class="logo">
+        Demyan <span>PC</span>
+    </div>
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero">
+
     <div>
-        <div class="badge">⚡ ПК-сервис рядом с вами</div>
+
+        <div class="badge">
+            ⚡ ПК-сервис рядом с вами
+        </div>
 
         <h1>
             Ремонт и настройка
@@ -310,24 +361,39 @@ footer {
         </h1>
 
         <p>
-            Помогу собрать, настроить и обслужить игровой
-            или рабочий ПК. Windows, чистка, диагностика,
-            апгрейд и многое другое.
+            Помогу собрать, настроить и обслужить
+            игровой или рабочий ПК.
+            Установка Windows, чистка,
+            диагностика, апгрейд и многое другое.
         </p>
 
         <div class="buttons">
-            <a class="btn btn-main" href="#contact">
-                Связаться со мной
+
+            <a
+                class="btn btn-main"
+                href="#services"
+            >
+                🛠️ Посмотреть услуги
             </a>
 
-            <a class="btn btn-dark" href="#services">
-                Посмотреть услуги
+            <a
+                class="btn btn-dark"
+                href="#gaming"
+            >
+                🎮 Игровые ПК
             </a>
+
         </div>
+
     </div>
+
 </section>
 
+
+<!-- ABOUT -->
+
 <section>
+
     <h2 class="section-title">
         Почему <span>Demyan PC?</span>
     </h2>
@@ -335,157 +401,29 @@ footer {
     <div class="experience">
 
         <div class="info-card">
+
             <strong>1+</strong>
-            <h3>год опыта</h3>
-            <p>Практический опыт работы с компьютерами и комплектующими.</p>
+
+            <h3>
+                год опыта
+            </h3>
+
+            <p>
+                Практический опыт работы
+                с компьютерами,
+                комплектующими и Windows.
+            </p>
+
         </div>
+
 
         <div class="info-card">
-            <strong>💻</strong>
-            <h3>Игровые ПК</h3>
-            <p>Сборка и настройка компьютеров под игры и повседневные задачи.</p>
-        </div>
 
-        <div class="info-card">
-            <strong>⚡</strong>
-            <h3>Без лишнего</h3>
-            <p>Подбираю решения под задачу и бюджет клиента.</p>
-        </div>
+            <strong>🎮</strong>
 
-    </div>
-</section>
+            <h3>
+                Игровые ПК
+            </h3>
 
-<section id="services">
-
-    <h2 class="section-title">
-        Услуги и <span>цены</span>
-    </h2>
-
-    <div class="services">
-
-        <div class="card">
-            <div class="icon">🧹</div>
-            <h3>Чистка ПК</h3>
-            <p>Очистка от пыли и базовая профилактика.</p>
-            <div class="price">от 500 ₽</div>
-        </div>
-
-        <div class="card">
-            <div class="icon">🪟</div>
-            <h3>Установка Windows</h3>
-            <p>Установка системы и необходимых драйверов.</p>
-            <div class="price">от 700 ₽</div>
-        </div>
-
-        <div class="card">
-            <div class="icon">🔍</div>
-            <h3>Диагностика</h3>
-            <p>Поиск причин неисправностей компьютера.</p>
-            <div class="price">от 300 ₽</div>
-        </div>
-
-        <div class="card">
-            <div class="icon">🚀</div>
-            <h3>Апгрейд ПК</h3>
-            <p>Помощь с подбором и установкой комплектующих.</p>
-            <div class="price">от 500 ₽</div>
-        </div>
-
-        <div class="card">
-            <div class="icon">🛠️</div>
-            <h3>Сборка ПК</h3>
-            <p>Сборка компьютера из ваших или подобранных комплектующих.</p>
-            <div class="price">от 1 000 ₽</div>
-        </div>
-
-        <div class="card">
-            <div class="icon">⚙️</div>
-            <h3>Настройка ПК</h3>
-            <p>Оптимизация Windows, программ и системы.</p>
-            <div class="price">от 500 ₽</div>
-        </div>
-
-    </div>
-</section>
-
-<section class="gaming">
-
-    <h2 class="section-title">
-        <span>Игровые ПК</span>
-    </h2>
-
-    <div class="pcs">
-
-        <div class="pc">
-            <div class="pc-art">
-                <div class="pc-case">
-                    <div class="fan"></div>
-                    <div class="fan"></div>
-                    <div class="fan"></div>
-                </div>
-            </div>
-
-            <div class="pc-info">
-                <h3>Gaming Start</h3>
-                <p>Недорогой вариант для популярных игр и учёбы.</p>
-                <div class="price">от 35 000 ₽</div>
-            </div>
-        </div>
-
-        <div class="pc">
-            <div class="pc-art">
-                <div class="pc-case">
-                    <div class="fan"></div>
-                    <div class="fan"></div>
-                    <div class="fan"></div>
-                </div>
-            </div>
-
-            <div class="pc-info">
-                <h3>Gaming Pro</h3>
-                <p>Производительный игровой ПК для высокого FPS.</p>
-                <div class="price">от 55 000 ₽</div>
-            </div>
-        </div>
-
-        <div class="pc">
-            <div class="pc-art">
-                <div class="pc-case">
-                    <div class="fan"></div>
-                    <div class="fan"></div>
-                    <div class="fan"></div>
-                </div>
-            </div>
-
-            <div class="pc-info">
-                <h3>Gaming Ultra</h3>
-                <p>Мощная сборка для современных игр и тяжёлых задач.</p>
-                <div class="price">от 80 000 ₽</div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<section class="contact" id="contact">
-
-    <h2 class="section-title">
-        Нужна помощь с <span>ПК?</span>
-    </h2>
-
-    <p>
-        Напишите мне — обсудим проблему, задачу и стоимость работы.
-    </p>
-
-    <a class="btn btn-main" href="https://t.me/">
-        💬 Написать мне
-    </a>
-
-</section>
-
-<footer>
-    © 2026 Demyan PC — ремонт и настройка компьютеров
-</footer>
-
-</body>
-  </html>
+            <p>
+                Помощь
