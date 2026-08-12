@@ -18,26 +18,39 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: #050912;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050810;
     color: #ffffff;
     line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* HEADER */
 
 header {
-    padding: 20px 7%;
-    border-bottom: 1px solid #172033;
     position: sticky;
     top: 0;
-    background: rgba(5, 9, 18, 0.95);
-    backdrop-filter: blur(12px);
-    z-index: 100;
+    z-index: 1000;
+    background: rgba(5, 8, 16, 0.94);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid #172133;
+}
+
+.nav {
+    max-width: 1150px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 25px;
     font-weight: 800;
 }
 
@@ -45,55 +58,75 @@ header {
     color: #00aaff;
 }
 
+.nav-links a {
+    margin-left: 25px;
+    color: #aeb8ca;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #00aaff;
+}
+
 /* HERO */
 
 .hero {
-    min-height: 680px;
-    padding: 90px 7%;
+    min-height: 720px;
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 
     background:
         radial-gradient(
             circle at 80% 40%,
-            #063b61 0,
+            rgba(0, 150, 255, 0.22),
             transparent 35%
         ),
         radial-gradient(
             circle at 20% 80%,
-            #171052 0,
-            transparent 30%
+            rgba(70, 30, 255, 0.14),
+            transparent 35%
         );
+}
+
+.hero-content {
+    max-width: 1150px;
+    width: 100%;
+    margin: auto;
+    padding: 80px 25px;
 }
 
 .badge {
     display: inline-block;
     padding: 10px 20px;
     border: 1px solid #008cff;
-    border-radius: 30px;
-    color: #56c7ff;
+    border-radius: 40px;
+    color: #42b8ff;
+    background: rgba(0, 130, 255, 0.08);
     margin-bottom: 25px;
-    background: #061323;
+    font-size: 17px;
 }
 
 h1 {
-    font-size: clamp(48px, 8vw, 82px);
-    line-height: 1.05;
+    font-size: clamp(48px, 8vw, 88px);
+    line-height: 1.02;
     max-width: 900px;
 }
 
-.blue {
+h1 span {
     color: #00aaff;
 }
 
-.hero p {
-    color: #aeb9cc;
-    font-size: 21px;
-    max-width: 760px;
-    margin: 28px 0;
+.hero-text {
+    max-width: 720px;
+    margin-top: 28px;
+    font-size: 20px;
+    color: #aeb8ca;
 }
 
 .buttons {
+    margin-top: 35px;
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
@@ -101,84 +134,123 @@ h1 {
 
 .btn {
     display: inline-block;
-    padding: 16px 28px;
-    border-radius: 16px;
-    text-decoration: none;
+    padding: 17px 28px;
+    border-radius: 15px;
+    font-size: 18px;
     font-weight: bold;
-    font-size: 17px;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
-.btn-main {
+.btn-primary {
     background: #00aaff;
-    color: #00101b;
+    color: #00101c;
 }
 
-.btn-main:hover {
+.btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px #00aaff55;
+    box-shadow: 0 10px 30px rgba(0, 170, 255, 0.3);
 }
 
-.btn-dark {
-    border: 1px solid #26344b;
-    color: white;
-    background: #0c1220;
+.btn-secondary {
+    border: 1px solid #273449;
+    background: #101622;
 }
 
-.btn-dark:hover {
+.btn-secondary:hover {
     border-color: #00aaff;
+    transform: translateY(-3px);
 }
 
 /* SECTIONS */
 
 section {
-    padding: 80px 7%;
+    max-width: 1150px;
+    margin: auto;
+    padding: 85px 25px;
 }
 
 .section-title {
     font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    color: #8793a8;
     margin-bottom: 40px;
+    font-size: 18px;
 }
 
-.section-title span {
-    color: #00aaff;
-}
+/* ABOUT */
 
-/* EXPERIENCE */
-
-.experience {
+.about {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
-.info-card {
-    background: linear-gradient(145deg, #0d1524, #080d17);
-    border: 1px solid #1b2b43;
+.card {
+    background: linear-gradient(145deg, #0d1420, #090e18);
+    border: 1px solid #1c293d;
     border-radius: 22px;
-    padding: 30px;
-    transition: 0.25s;
+    padding: 28px;
+    transition: 0.3s;
 }
 
-.info-card:hover {
-    transform: translateY(-5px);
-    border-color: #00aaff;
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #008cff;
 }
 
-.info-card strong {
-    display: block;
+.card-icon {
     font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #8995a9;
+}
+
+/* EXPERIENCE */
+
+.experience {
+    text-align: center;
+    background:
+        linear-gradient(
+            135deg,
+            #071526,
+            #090b18
+        );
+
+    border-top: 1px solid #172337;
+    border-bottom: 1px solid #172337;
+
+    max-width: none;
+}
+
+.experience-inner {
+    max-width: 900px;
+    margin: auto;
+}
+
+.experience-number {
+    font-size: 70px;
+    font-weight: 900;
     color: #00aaff;
-    margin-bottom: 5px;
 }
 
-.info-card h3 {
-    font-size: 23px;
-    margin-bottom: 8px;
+.experience-inner h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
 }
 
-.info-card p {
-    color: #9ba8bb;
+.experience-inner p {
+    color: #9aa6b9;
+    font-size: 18px;
 }
 
 /* SERVICES */
@@ -189,241 +261,41 @@ section {
     gap: 20px;
 }
 
-.card {
-    background: linear-gradient(145deg, #0d1524, #080d17);
-    border: 1px solid #1b2b43;
-    border-radius: 22px;
-    padding: 30px;
-    transition: 0.25s;
+.service {
+    padding: 28px;
+    background: #0c121d;
+    border: 1px solid #1a2638;
+    border-radius: 20px;
+    transition: 0.3s;
 }
 
-.card:hover {
-    transform: translateY(-6px);
-    border-color: #00aaff;
+.service:hover {
+    transform: translateY(-5px);
+    border-color: #008cff;
 }
 
-.icon {
-    font-size: 40px;
-    margin-bottom: 15px;
+.service h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
 }
 
-.card h3 {
-    font-size: 23px;
-    margin-bottom: 8px;
-}
-
-.card p {
-    color: #9ba8bb;
+.service p {
+    color: #8f9bae;
 }
 
 .price {
-    margin-top: 18px;
-    font-size: 25px;
-    font-weight: bold;
     color: #00aaff;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 18px;
 }
 
-/* GAMING PCS */
+/* GALLERY */
 
-.gaming {
-    background: #070d18;
-}
-
-.pcs {
+.gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 18px;
 }
 
-.pc {
-    overflow: hidden;
-    border-radius: 24px;
-    background: #0d1523;
-    border: 1px solid #1b2b43;
-    transition: 0.25s;
-}
-
-.pc:hover {
-    transform: translateY(-6px);
-    border-color: #00aaff;
-}
-
-.pc-img {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    display: block;
-}
-
-.pc-info {
-    padding: 25px;
-}
-
-.pc-info h3 {
-    font-size: 23px;
-    margin-bottom: 8px;
-}
-
-.pc-info p {
-    color: #9ba8bb;
-}
-
-/* CONTACT */
-
-.contact {
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #07385a,
-            transparent 45%
-        );
-}
-
-.contact p {
-    color: #aeb9cc;
-    margin: 15px auto 30px;
-    max-width: 600px;
-}
-
-/* FOOTER */
-
-footer {
-    text-align: center;
-    padding: 30px;
-    border-top: 1px solid #172033;
-    color: #69778c;
-}
-
-/* MOBILE */
-
-@media (max-width: 800px) {
-
-    .experience,
-    .services,
-    .pcs {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        min-height: 600px;
-        padding: 60px 5%;
-    }
-
-    .hero p {
-        font-size: 18px;
-    }
-
-    section {
-        padding: 60px 5%;
-    }
-
-    .section-title {
-        font-size: 34px;
-    }
-
-    header {
-        padding: 18px 5%;
-    }
-
-    .logo {
-        font-size: 25px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-
-<header>
-    <div class="logo">
-        Demyan <span>PC</span>
-    </div>
-</header>
-
-
-<!-- HERO -->
-
-<section class="hero">
-
-    <div>
-
-        <div class="badge">
-            ⚡ ПК-сервис рядом с вами
-        </div>
-
-        <h1>
-            Ремонт и настройка
-            <span class="blue">компьютеров</span>
-        </h1>
-
-        <p>
-            Помогу собрать, настроить и обслужить
-            игровой или рабочий ПК.
-            Установка Windows, чистка,
-            диагностика, апгрейд и многое другое.
-        </p>
-
-        <div class="buttons">
-
-            <a
-                class="btn btn-main"
-                href="#services"
-            >
-                🛠️ Посмотреть услуги
-            </a>
-
-            <a
-                class="btn btn-dark"
-                href="#gaming"
-            >
-                🎮 Игровые ПК
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ABOUT -->
-
-<section>
-
-    <h2 class="section-title">
-        Почему <span>Demyan PC?</span>
-    </h2>
-
-    <div class="experience">
-
-        <div class="info-card">
-
-            <strong>1+</strong>
-
-            <h3>
-                год опыта
-            </h3>
-
-            <p>
-                Практический опыт работы
-                с компьютерами,
-                комплектующими и Windows.
-            </p>
-
-        </div>
-
-
-        <div class="info-card">
-
-            <strong>🎮</strong>
-
-            <h3>
-                Игровые ПК
-            </h3>
-
-            <p>
-                Помощь
+.gallery img {
