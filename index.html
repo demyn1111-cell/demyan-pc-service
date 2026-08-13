@@ -71,9 +71,12 @@ body{
 
 body::before{
     content:"";
+
     position:fixed;
     inset:0;
+
     pointer-events:none;
+
     opacity:.22;
 
     background-image:
@@ -121,6 +124,7 @@ header{
     z-index:1000;
 
     background:rgba(3,5,13,.76);
+
     backdrop-filter:blur(22px);
 
     border-bottom:1px solid rgba(255,255,255,.07);
@@ -184,6 +188,7 @@ header{
     position:relative;
 
     color:#aebbd0;
+
     font-size:14px;
     font-weight:800;
 
@@ -194,6 +199,7 @@ header{
     content:"";
 
     position:absolute;
+
     left:0;
     bottom:-8px;
 
@@ -219,6 +225,7 @@ header{
     border-radius:12px;
 
     background:rgba(0,168,255,.08);
+
     border:1px solid var(--blue-border);
 
     color:#dff6ff;
@@ -231,6 +238,7 @@ header{
 
 .header-phone:hover{
     background:rgba(0,168,255,.15);
+
     transform:translateY(-2px);
 }
 
@@ -238,11 +246,13 @@ header{
     display:none;
 
     border:0;
+
     background:transparent;
 
     color:white;
 
     font-size:29px;
+
     cursor:pointer;
 }
 
@@ -267,6 +277,7 @@ header{
     background:rgba(5,9,20,.98);
 
     border:1px solid var(--border);
+
     border-radius:20px;
 
     box-shadow:var(--shadow);
@@ -302,9 +313,11 @@ header{
     min-height:760px;
 
     margin:auto;
+
     padding:75px 22px;
 
     display:grid;
+
     grid-template-columns:1fr 1fr;
 
     align-items:center;
@@ -319,7 +332,9 @@ header{
 
 .badge{
     display:inline-flex;
+
     align-items:center;
+
     gap:9px;
 
     padding:10px 15px;
@@ -329,6 +344,7 @@ header{
     border-radius:999px;
 
     background:rgba(0,168,255,.07);
+
     border:1px solid rgba(0,168,255,.28);
 
     color:#bceaff;
@@ -390,6 +406,7 @@ header{
     color:var(--muted);
 
     font-size:19px;
+
     line-height:1.7;
 
     margin-bottom:32px;
@@ -397,7 +414,9 @@ header{
 
 .hero-buttons{
     display:flex;
+
     gap:13px;
+
     flex-wrap:wrap;
 }
 
@@ -407,13 +426,16 @@ header{
     padding:0 25px;
 
     display:inline-flex;
+
     align-items:center;
     justify-content:center;
+
     gap:9px;
 
     border-radius:15px;
 
     font-size:15px;
+
     font-weight:950;
 
     transition:.3s;
@@ -452,7 +474,7 @@ header{
 
 
 /* =========================================================
-   HERO IMAGE
+   HERO IMAGE — ИЗМЕНЕНО
    ========================================================= */
 
 .hero-visual{
@@ -469,8 +491,8 @@ header{
     background:
         radial-gradient(
             circle,
-            rgba(0,168,255,.35),
-            rgba(105,45,255,.15),
+            rgba(0,168,255,.38),
+            rgba(105,45,255,.18),
             transparent 67%
         );
 
@@ -499,6 +521,7 @@ header{
     content:"";
 
     position:absolute;
+
     inset:0;
 
     z-index:1;
@@ -506,19 +529,45 @@ header{
     background:
         linear-gradient(
             135deg,
-            rgba(0,0,0,.1),
-            transparent 45%,
-            rgba(0,0,0,.45)
+            rgba(0,0,0,.05),
+            transparent 40%,
+            rgba(0,0,0,.55)
         );
 
     pointer-events:none;
 }
 
+.hero-image::after{
+    content:"";
+
+    position:absolute;
+
+    z-index:2;
+
+    left:0;
+    right:0;
+    top:0;
+
+    height:35%;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,168,255,.12),
+            transparent
+        );
+}
+
 .hero-image img{
     width:100%;
+
     height:560px;
 
     object-fit:cover;
+
+    object-position:center;
 
     transition:
         transform .8s ease,
@@ -529,8 +578,8 @@ header{
     transform:scale(1.055);
 
     filter:
-        brightness(1.08)
-        saturate(1.08);
+        brightness(1.1)
+        saturate(1.15);
 }
 
 .hero-overlay{
@@ -614,6 +663,7 @@ header{
     position:absolute;
 
     top:0;
+
     left:15%;
     right:15%;
 
@@ -667,6 +717,7 @@ section{
     color:var(--blue);
 
     font-size:12px;
+
     font-weight:950;
 
     text-transform:uppercase;
@@ -743,6 +794,8 @@ section{
         box-shadow .3s;
 
     overflow:hidden;
+
+    cursor:pointer;
 }
 
 .service::after{
@@ -781,6 +834,7 @@ section{
     height:58px;
 
     display:grid;
+
     place-items:center;
 
     margin-bottom:18px;
@@ -978,7 +1032,7 @@ section{
 
 
 /* =========================================================
-   REVIEWS
+   REVIEWS — ОСТАВЛЕНО В ПРЕЖНЕМ СТИЛЕ
    ========================================================= */
 
 .reviews{
@@ -1021,6 +1075,7 @@ section{
     display:flex;
 
     align-items:center;
+
     justify-content:space-between;
 
     gap:10px;
@@ -1241,6 +1296,7 @@ footer{
 
     .pc:first-child{
         grid-column:span 2;
+
         grid-row:span 1;
     }
 }
@@ -1356,6 +1412,7 @@ footer{
 
     .pc:first-child{
         grid-column:auto;
+
         grid-row:auto;
     }
 
@@ -1529,9 +1586,11 @@ footer{
         </div>
 
 
+        <!-- ИЗМЕНЕНО ТОЛЬКО НАЗВАНИЕ -->
+
         <h1>
-            Твой ПК.<br>
-            Моя <span class="gradient">работа.</span>
+            Компьютерный<br>
+            <span class="gradient">сервис рядом.</span>
         </h1>
 
 
@@ -1568,18 +1627,17 @@ footer{
 
         <div class="hero-image">
 
-            <!-- НОВАЯ КРАСИВАЯ ГЛАВНАЯ КАРТИНКА -->
+            <!-- ИЗМЕНЕНА ТОЛЬКО ГЛАВНАЯ КАРТИНКА -->
 
             <img
-                src="https://images.unsplash.com/photo-1625842268584-8f3296236761?auto=format&fit=crop&w=1400&q=95"
-                alt="Красивый современный игровой компьютер"
+                src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1400&q=95"
+                alt="Современный игровой компьютер"
             >
-
 
             <div class="hero-overlay">
 
                 <strong>
-                    🖥️ Demyan PC Service
+                    🎮 Demyan PC Service
                 </strong>
 
                 <span>
@@ -1695,222 +1753,177 @@ footer{
 
         <article class="service">
             <div class="service-icon">🧹</div>
-
             <h3>Полная чистка от пыли</h3>
-
             <p>
                 Аккуратная очистка внутренних
                 компонентов компьютера от пыли.
             </p>
-
             <span class="price">от 300 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">❄️</div>
-
             <h3>Чистка системы охлаждения</h3>
-
             <p>
                 Очистка вентиляторов, радиаторов
                 и элементов системы охлаждения.
             </p>
-
             <span class="price">от 250 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">🌡️</div>
-
             <h3>Замена термопасты</h3>
-
             <p>
                 Замена старой термопасты для
                 улучшения охлаждения процессора.
             </p>
-
             <span class="price">от 250 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">🔍</div>
-
             <h3>Диагностика</h3>
-
             <p>
                 Поиск причины неисправности
                 и проверка основных компонентов.
             </p>
-
             <span class="price free">БЕСПЛАТНО</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">🔧</div>
-
             <h3>Замена комплектующих</h3>
-
             <p>
                 Замена неисправных или устаревших
                 компонентов компьютера.
             </p>
-
             <span class="price">от 300 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">🔥</div>
-
             <h3>Пайка и ремонт плат</h3>
-
             <p>
                 Пайка и ремонт электронных плат
                 и компонентов.
             </p>
-
             <span class="price">от 500 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">🖥️</div>
-
             <h3>Сборка ПК с нуля</h3>
-
             <p>
                 Сборка компьютера из комплектующих
                 под задачи и бюджет.
             </p>
-
             <span class="price">от 1 000 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">❄️</div>
-
             <h3>
                 Установка и настройка
                 системы охлаждения
             </h3>
-
             <p>
                 Установка и настройка совместимой
                 системы охлаждения.
             </p>
-
             <span class="price">от 500 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">💿</div>
-
             <h3>Установка Windows</h3>
-
             <p>
                 Установка операционной системы
                 и базовая настройка.
             </p>
-
             <span class="price">от 500 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">🛡️</div>
-
             <h3>
                 Установка антивируса
                 + удаление вирусов
             </h3>
-
             <p>
                 Установка защиты и проверка
                 системы на вредоносные программы.
             </p>
-
             <span class="price">от 300 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">📦</div>
-
             <h3>
                 Обновление и установка драйверов
             </h3>
-
             <p>
                 Установка необходимых драйверов
                 и обновление старых версий.
             </p>
-
             <span class="price">от 200 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">⚙️</div>
-
             <h3>
                 Установка и настройка программ
             </h3>
-
             <p>
                 Установка нужных программ
                 и их первоначальная настройка.
             </p>
-
             <span class="price">от 200 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">🚀</div>
-
             <h3>
                 Оптимизация и ускорение системы
             </h3>
-
             <p>
                 Оптимизация Windows для более
                 быстрой и комфортной работы.
             </p>
-
             <span class="price">от 300 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">🧹</div>
-
             <h3>Очистка памяти</h3>
-
             <p>
                 Освобождение места и удаление
                 ненужных временных файлов.
             </p>
-
             <span class="price">от 200 ₽</span>
         </article>
 
 
         <article class="service">
             <div class="service-icon">🌐</div>
-
             <h3>Создание сайта</h3>
-
             <p>
                 Создание современных сайтов
                 для услуг, проектов и бизнеса.
             </p>
-
             <span class="price">от 1 000 ₽</span>
         </article>
 
@@ -1950,15 +1963,8 @@ footer{
             >
 
             <div class="pc-info">
-
-                <strong>
-                    RGB Gaming PC
-                </strong>
-
-                <span>
-                    Премиальная игровая сборка
-                </span>
-
+                <strong>RGB Gaming PC</strong>
+                <span>Премиальная игровая сборка</span>
             </div>
 
         </article>
@@ -1973,15 +1979,8 @@ footer{
             >
 
             <div class="pc-info">
-
-                <strong>
-                    Gaming Setup
-                </strong>
-
-                <span>
-                    ПК для игр
-                </span>
-
+                <strong>Gaming Setup</strong>
+                <span>ПК для игр</span>
             </div>
 
         </article>
@@ -1996,15 +1995,8 @@ footer{
             >
 
             <div class="pc-info">
-
-                <strong>
-                    Power PC
-                </strong>
-
-                <span>
-                    Производительная система
-                </span>
-
+                <strong>Power PC</strong>
+                <span>Производительная система</span>
             </div>
 
         </article>
@@ -2019,15 +2011,8 @@ footer{
             >
 
             <div class="pc-info">
-
-                <strong>
-                    Gaming Station
-                </strong>
-
-                <span>
-                    Игровое рабочее место
-                </span>
-
+                <strong>Gaming Station</strong>
+                <span>Игровое рабочее место</span>
             </div>
 
         </article>
@@ -2042,15 +2027,8 @@ footer{
             >
 
             <div class="pc-info">
-
-                <strong>
-                    PC Setup
-                </strong>
-
-                <span>
-                    Современная сборка
-                </span>
-
+                <strong>PC Setup</strong>
+                <span>Современная сборка</span>
             </div>
 
         </article>
@@ -2143,7 +2121,7 @@ footer{
 
 
 <!-- =======================================================
-     REVIEWS — КАК РАНЬШЕ
+     REVIEWS
      ======================================================= -->
 
 <section id="reviews">
@@ -2392,9 +2370,6 @@ document.addEventListener(
 
 /* =========================================================
    ЗВУК НАЖАТИЯ
-   ---------------------------------------------------------
-   Никаких mp3-файлов не нужно.
-   Звук создаётся прямо браузером.
    ========================================================= */
 
 let audioContext = null;
@@ -2419,38 +2394,46 @@ function playClickSound(){
 
         }
 
+        const now =
+            audioContext.currentTime;
+
+
         const oscillator =
             audioContext.createOscillator();
 
         const gain =
             audioContext.createGain();
 
+
         oscillator.type = "sine";
 
+
         oscillator.frequency.setValueAtTime(
-            620,
-            audioContext.currentTime
+            760,
+            now
         );
 
         oscillator.frequency.exponentialRampToValueAtTime(
-            360,
-            audioContext.currentTime + 0.045
+            430,
+            now + 0.055
         );
+
 
         gain.gain.setValueAtTime(
             0.0001,
-            audioContext.currentTime
+            now
         );
 
         gain.gain.exponentialRampToValueAtTime(
-            0.045,
-            audioContext.currentTime + 0.006
+            0.065,
+            now + 0.008
         );
 
         gain.gain.exponentialRampToValueAtTime(
             0.0001,
-            audioContext.currentTime + 0.055
+            now + 0.075
         );
+
 
         oscillator.connect(gain);
 
@@ -2458,16 +2441,21 @@ function playClickSound(){
             audioContext.destination
         );
 
-        oscillator.start();
+
+        oscillator.start(now);
 
         oscillator.stop(
-            audioContext.currentTime + 0.06
+            now + 0.08
         );
 
-    }catch(error){
+    }
 
-        /* Если браузер запретил звук —
-           сайт продолжает работать нормально. */
+    catch(error){
+
+        console.log(
+            "Звук недоступен:",
+            error
+        );
 
     }
 
@@ -2475,13 +2463,11 @@ function playClickSound(){
 
 
 /* =========================================================
-   ВКЛЮЧАЕМ ЗВУК НА КНОПКИ И ССЫЛКИ
+   ЗВУК НА КНОПКИ И ССЫЛКИ
    ========================================================= */
 
 document
-    .querySelectorAll(
-        ".click-sound"
-    )
+    .querySelectorAll(".click-sound")
     .forEach(function(element){
 
         element.addEventListener(
@@ -2497,8 +2483,7 @@ document
 
 
 /* =========================================================
-   ДОПОЛНИТЕЛЬНО:
-   Звук на карточки услуг
+   ЗВУК НА КАРТОЧКИ УСЛУГ
    ========================================================= */
 
 document
@@ -2516,7 +2501,49 @@ document
 
     });
 
+
+/* =========================================================
+   ПРЕДЗАПУСК AUDIO CONTEXT ПО ПЕРВОМУ КАСАНИЮ
+   На телефонах это помогает браузеру разрешить звук.
+   ========================================================= */
+
+document.addEventListener(
+    "touchstart",
+    function(){
+
+        if(!audioContext){
+
+            try{
+
+                audioContext =
+                    new (
+                        window.AudioContext ||
+                        window.webkitAudioContext
+                    )();
+
+            }
+
+            catch(error){}
+
+        }
+
+        if(
+            audioContext &&
+            audioContext.state === "suspended"
+        ){
+
+            audioContext.resume();
+
+        }
+
+    },
+    {
+        once:true,
+        passive:true
+    }
+);
+
 </script>
 
 </body>
-   </html>
+    </html>
