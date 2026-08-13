@@ -1,844 +1,766 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Demyan PC — Ремонт и настройка компьютеров</title>
+<title>Demyan PC — ремонт и настройка компьютеров</title>
 
-  <meta name="description" content="Demyan PC — ремонт, настройка, чистка и апгрейд компьютеров. Опыт работы 1+ год.">
+<meta name="description" content="Ремонт, настройка, чистка и модернизация компьютеров. Demyan PC Service.">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 80% 10%, rgba(0, 157, 255, 0.16), transparent 30%),
+        radial-gradient(circle at 10% 70%, rgba(91, 45, 255, 0.13), transparent 28%),
+        #050812;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(1120px, 92%);
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(5, 8, 18, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.nav {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: #08a8ff;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #aeb8cc;
+    transition: 0.25s;
+}
+
+nav a:hover {
+    color: #08a8ff;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 720px;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.badge {
+    display: inline-flex;
+    padding: 10px 18px;
+    border: 1px solid rgba(0,169,255,0.45);
+    border-radius: 50px;
+    color: #56c7ff;
+    background: rgba(0,140,255,0.08);
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: clamp(46px, 6vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -3px;
+    margin-bottom: 28px;
+}
+
+h1 span {
+    color: #08a8ff;
+}
+
+.hero-text {
+    color: #aeb8cc;
+    font-size: 20px;
+    max-width: 650px;
+    margin-bottom: 32px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    padding: 0 25px;
+    border-radius: 15px;
+    font-weight: 800;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.btn-main {
+    background: #08a8ff;
+    color: #00101b;
+    box-shadow: 0 12px 35px rgba(0,168,255,0.28);
+}
+
+.btn-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 17px 40px rgba(0,168,255,0.38);
+}
+
+.btn-secondary {
+    border: 1px solid rgba(255,255,255,0.13);
+    background: rgba(255,255,255,0.04);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-3px);
+}
+
+/* HERO IMAGE */
+
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    display: block;
+    border-radius: 28px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.55),
+        0 0 80px rgba(0,157,255,0.13);
+}
+
+.experience {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 16px 20px;
+    border-radius: 17px;
+    background: rgba(5,8,18,0.9);
+    border: 1px solid rgba(0,168,255,0.3);
+    backdrop-filter: blur(10px);
+}
+
+.experience strong {
+    display: block;
+    font-size: 24px;
+    color: #08a8ff;
+}
+
+.experience small {
+    color: #b6bfd0;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 90px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: clamp(34px, 5vw, 50px);
+    letter-spacing: -1.5px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #8f9ab0;
+    font-size: 18px;
+}
+
+/* SERVICES */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.service {
+    padding: 28px;
+    border-radius: 22px;
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.065),
+        rgba(255,255,255,0.025)
+    );
+    border: 1px solid rgba(255,255,255,0.09);
+    transition: 0.25s;
+}
+
+.service:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,168,255,0.4);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.25);
+}
+
+.icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: rgba(0,168,255,0.1);
+    font-size: 25px;
+    margin-bottom: 18px;
+}
+
+.service h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.service p {
+    color: #929db2;
+    min-height: 76px;
+}
+
+.price {
+    margin-top: 18px;
+    color: #08a8ff;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+/* GALLERY */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.gallery-card {
+    overflow: hidden;
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: #0b101d;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: 0.4s;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-card div {
+    padding: 18px;
+}
+
+.gallery-card h3 {
+    margin-bottom: 5px;
+}
+
+.gallery-card p {
+    color: #8f9ab0;
+}
+
+/* ADVANTAGES */
+
+.advantages {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.advantage {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.advantage .big {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.advantage h3 {
+    margin-bottom: 7px;
+}
+
+.advantage p {
+    color: #8f9ab0;
+}
+
+/* CONTACT */
+
+.contact-box {
+    text-align: center;
+    padding: 65px 25px;
+    border-radius: 30px;
+    background:
+        radial-gradient(circle at center, rgba(0,168,255,0.13), transparent 55%),
+        rgba(255,255,255,0.035);
+    border: 1px solid rgba(0,168,255,0.18);
+}
+
+.contact-box h2 {
+    font-size: clamp(34px, 5vw, 52px);
+    margin-bottom: 15px;
+}
+
+.contact-box p {
+    color: #9ba6ba;
+    font-size: 18px;
+    margin-bottom: 28px;
+}
+
+.phone {
+    display: block;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 900;
+    color: #08a8ff;
+    margin-bottom: 28px;
+}
+
+.contact-note {
+    color: #77839a;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    color: #68748a;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .hero {
+        padding: 60px 0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #070a12;
-      color: #ffffff;
-      line-height: 1.6;
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    .gallery {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .container {
-      width: min(1120px, 92%);
-      margin: 0 auto;
+    .advantages {
+        grid-template-columns: repeat(2, 1fr);
     }
+}
 
-    /* HEADER */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(7, 10, 18, 0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid #1d2638;
-    }
+@media (max-width: 620px) {
 
     .nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: #09a9ff;
+        min-height: 62px;
     }
 
     nav {
-      display: flex;
-      gap: 26px;
-      color: #aeb8ca;
-      font-weight: 600;
+        display: none;
     }
-
-    nav a {
-      transition: 0.2s;
-    }
-
-    nav a:hover {
-      color: #09a9ff;
-    }
-
-    .nav-phone {
-      padding: 10px 16px;
-      border: 1px solid #087fbe;
-      border-radius: 12px;
-      color: #09a9ff;
-      font-weight: 700;
-    }
-
-    /* HERO */
 
     .hero {
-      min-height: 700px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 75% 35%, rgba(0, 157, 255, 0.20), transparent 30%),
-        radial-gradient(circle at 20% 80%, rgba(75, 0, 255, 0.14), transparent 30%);
-    }
-
-    .hero-content {
-      max-width: 760px;
-      padding: 90px 0;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 10px 18px;
-      border: 1px solid #087fbe;
-      border-radius: 50px;
-      background: rgba(0, 157, 255, 0.08);
-      color: #42bdff;
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 24px;
+        min-height: auto;
+        padding: 55px 0 65px;
     }
 
     h1 {
-      font-size: clamp(44px, 7vw, 78px);
-      line-height: 0.98;
-      letter-spacing: -3px;
-      margin-bottom: 28px;
-    }
-
-    h1 span {
-      color: #09a9ff;
+        font-size: 48px;
+        letter-spacing: -2px;
     }
 
     .hero-text {
-      color: #aeb8ca;
-      font-size: 20px;
-      max-width: 720px;
-      margin-bottom: 34px;
+        font-size: 17px;
     }
 
     .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
+        flex-direction: column;
     }
 
     .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 56px;
-      padding: 0 26px;
-      border-radius: 14px;
-      font-size: 17px;
-      font-weight: 800;
-      transition: 0.25s;
+        width: 100%;
     }
-
-    .btn-primary {
-      background: #09a9ff;
-      color: #00101b;
-      box-shadow: 0 10px 35px rgba(9, 169, 255, 0.22);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      background: #35b8ff;
-    }
-
-    .btn-secondary {
-      border: 1px solid #303b50;
-      background: #101521;
-      color: #ffffff;
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-3px);
-      border-color: #09a9ff;
-    }
-
-    /* STATS */
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 55px;
-    }
-
-    .stat {
-      padding: 20px;
-      background: rgba(16, 21, 33, 0.8);
-      border: 1px solid #1d293d;
-      border-radius: 18px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 30px;
-      color: #09a9ff;
-    }
-
-    .stat span {
-      color: #8995aa;
-    }
-
-    /* SECTIONS */
 
     section {
-      padding: 90px 0;
+        padding: 65px 0;
     }
 
-    .section-title {
-      font-size: clamp(34px, 5vw, 52px);
-      line-height: 1.05;
-      margin-bottom: 14px;
+    .services-grid,
+    .gallery,
+    .advantages {
+        grid-template-columns: 1fr;
     }
 
-    .section-subtitle {
-      color: #8f9bb0;
-      font-size: 18px;
-      margin-bottom: 40px;
-    }
-
-    /* SERVICES */
-
-    .services {
-      background: #090d16;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .service-card {
-      padding: 28px;
-      border-radius: 20px;
-      background: #101521;
-      border: 1px solid #202b3e;
-      transition: 0.25s;
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      border-color: #078fd6;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
-    }
-
-    .service-icon {
-      font-size: 36px;
-      margin-bottom: 15px;
-    }
-
-    .service-card h3 {
-      font-size: 23px;
-      margin-bottom: 10px;
-    }
-
-    .service-card p {
-      color: #929db0;
-      margin-bottom: 18px;
-    }
-
-    .price {
-      font-size: 24px;
-      font-weight: 900;
-      color: #09a9ff;
-    }
-
-    /* GALLERY */
-
-    .gallery {
-      background: #070a12;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 16px;
-    }
-
-    .gallery-card {
-      min-height: 240px;
-      overflow: hidden;
-      border-radius: 20px;
-      border: 1px solid #202b3e;
-      position: relative;
-      background: #111722;
-    }
-
-    .gallery-card:first-child {
-      min-height: 496px;
+    .service p {
+        min-height: auto;
     }
 
     .gallery-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: 0.5s;
+        height: 240px;
     }
 
-    .gallery-card:hover img {
-      transform: scale(1.06);
+    .experience {
+        left: 12px;
+        bottom: 12px;
     }
-
-    .gallery-label {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      padding: 12px 15px;
-      border-radius: 12px;
-      background: rgba(0, 0, 0, 0.68);
-      backdrop-filter: blur(8px);
-      font-weight: 800;
-    }
-
-    /* ADVANTAGES */
-
-    .advantages {
-      background: #090d16;
-    }
-
-    .advantages-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .advantage {
-      display: flex;
-      gap: 18px;
-      padding: 25px;
-      background: #101521;
-      border: 1px solid #202b3e;
-      border-radius: 18px;
-    }
-
-    .advantage-icon {
-      width: 50px;
-      height: 50px;
-      flex: 0 0 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 14px;
-      background: rgba(9, 169, 255, 0.12);
-      color: #09a9ff;
-      font-size: 24px;
-    }
-
-    .advantage h3 {
-      margin-bottom: 5px;
-    }
-
-    .advantage p {
-      color: #929db0;
-    }
-
-    /* CONTACT */
-
-    .contact {
-      text-align: center;
-      background:
-        radial-gradient(circle at center, rgba(0, 157, 255, 0.13), transparent 45%),
-        #070a12;
-    }
-
-    .contact-box {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 55px 30px;
-      border: 1px solid #20334b;
-      border-radius: 28px;
-      background: #0d131f;
-    }
-
-    .contact-box h2 {
-      font-size: clamp(34px, 5vw, 54px);
-      margin-bottom: 15px;
-    }
-
-    .contact-box p {
-      color: #929db0;
-      font-size: 18px;
-      margin-bottom: 28px;
-    }
-
-    .phone {
-      display: block;
-      font-size: clamp(30px, 6vw, 46px);
-      font-weight: 900;
-      color: #09a9ff;
-      margin-bottom: 28px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      padding: 30px 0;
-      border-top: 1px solid #1d2638;
-      color: #68758b;
-      text-align: center;
-      background: #070a12;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 850px) {
-      nav {
-        display: none;
-      }
-
-      .nav-phone {
-        font-size: 14px;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-content {
-        padding: 75px 0;
-      }
-
-      .hero-text {
-        font-size: 18px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .service-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .gallery-card,
-      .gallery-card:first-child {
-        min-height: 260px;
-      }
-
-      .advantages-grid {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 70px 0;
-      }
-    }
-
-    @media (max-width: 500px) {
-      .nav {
-        min-height: 64px;
-      }
-
-      .logo {
-        font-size: 21px;
-      }
-
-      .nav-phone {
-        padding: 8px 11px;
-      }
-
-      h1 {
-        font-size: 48px;
-        letter-spacing: -2px;
-      }
-
-      .buttons {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .contact-box {
-        padding: 40px 20px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
 
 <body>
 
-  <header>
+<header>
     <div class="container nav">
+        <a href="#" class="logo">Demyan <span>PC</span></a>
 
-      <a href="#" class="logo">
-        Demyan <span>PC</span>
-      </a>
+        <nav>
+            <a href="#services">Услуги</a>
+            <a href="#gallery">ПК</a>
+            <a href="#advantages">Почему я</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </div>
+</header>
 
-      <nav>
-        <a href="#services">Услуги</a>
-        <a href="#gallery">Работы</a>
-        <a href="#about">Обо мне</a>
-        <a href="#contact">Контакты</a>
-      </nav>
+<main>
 
-      <a class="nav-phone" href="tel:+79094134741">
-        📞 Позвонить
-      </a>
+<section class="hero">
+    <div class="container hero-grid">
+
+        <div>
+            <div class="badge">⚡ ПК-сервис рядом с вами</div>
+
+            <h1>
+                Ремонт и настройка
+                <span>компьютеров</span>
+            </h1>
+
+            <p class="hero-text">
+                Помогу собрать, настроить, почистить и ускорить
+                игровой или рабочий ПК. Windows, драйверы,
+                антивирус, диагностика, апгрейд и многое другое.
+            </p>
+
+            <div class="buttons">
+                <a class="btn btn-main" href="tel:+79094134741">
+                    📞 Позвонить мне
+                </a>
+
+                <a class="btn btn-secondary" href="#services">
+                    Посмотреть услуги
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img
+                src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1000&q=85"
+                alt="Игровой компьютер"
+            >
+
+            <div class="experience">
+                <strong>1+ год</strong>
+                <small>опыта работы</small>
+            </div>
+        </div>
 
     </div>
-  </header>
+</section>
 
+<section id="services">
+    <div class="container">
 
-  <main>
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-      <div class="container hero-content">
-
-        <div class="badge">
-          ⚡ ПК-сервис рядом с вами
+        <div class="section-title">
+            <h2>Услуги</h2>
+            <p>Доступные цены без лишних услуг</p>
         </div>
 
-        <h1>
-          Ремонт и настройка
-          <span>компьютеров</span>
-        </h1>
+        <div class="services-grid">
 
-        <p class="hero-text">
-          Помогу собрать, настроить и обслужить игровой или рабочий ПК.
-          Установка Windows, чистка, диагностика, апгрейд и устранение
-          проблем с компьютером.
-        </p>
+            <div class="service">
+                <div class="icon">🔍</div>
+                <h3>Диагностика ПК</h3>
+                <p>Проверю комплектующие, температуры, накопитель и основные проблемы компьютера.</p>
+                <div class="price">от 200 ₽</div>
+            </div>
 
-        <div class="buttons">
+            <div class="service">
+                <div class="icon">🧹</div>
+                <h3>Чистка ПК</h3>
+                <p>Очистка от пыли и проверка системы охлаждения.</p>
+                <div class="price">от 400 ₽</div>
+            </div>
 
-          <a href="tel:+79094134741" class="btn btn-primary">
-            📞 Связаться со мной
-          </a>
+            <div class="service">
+                <div class="icon">💻</div>
+                <h3>Установка Windows</h3>
+                <p>Установка системы, драйверов и базовая настройка.</p>
+                <div class="price">от 600 ₽</div>
+            </div>
 
-          <a href="#services" class="btn btn-secondary">
-            Посмотреть услуги
-          </a>
+            <div class="service">
+                <div class="icon">🛡️</div>
+                <h3>Антивирус</h3>
+                <p>Установка и базовая настройка антивирусной защиты.</p>
+                <div class="price">от 300 ₽</div>
+            </div>
+
+            <div class="service">
+                <div class="icon">⚡</div>
+                <h3>Ускорение ПК</h3>
+                <p>Уберу лишнее из автозагрузки и оптимизирую систему.</p>
+                <div class="price">от 350 ₽</div>
+            </div>
+
+            <div class="service">
+                <div class="icon">🎮</div>
+                <h3>Игровая настройка</h3>
+                <p>Настройка Windows и игр для более стабильного FPS.</p>
+                <div class="price">от 400 ₽</div>
+            </div>
+
+            <div class="service">
+                <div class="icon">🔧</div>
+                <h3>Апгрейд ПК</h3>
+                <p>Помогу подобрать и установить новые комплектующие.</p>
+                <div class="price">от 400 ₽</div>
+            </div>
+
+            <div class="service">
+                <div class="icon">💾</div>
+                <h3>Драйверы</h3>
+                <p>Установка и обновление драйверов для комплектующих.</p>
+                <div class="price">от 250 ₽</div>
+            </div>
+
+            <div class="service">
+                <div class="icon">📀</div>
+                <h3>Дисковод</h3>
+                <p>Проверка дисковода и помощь с проблемами чтения дисков.</p>
+                <div class="price">от 300 ₽</div>
+            </div>
+
+            <div class="service">
+                <div class="icon">📶</div>
+                <h3>Интернет и Wi-Fi</h3>
+                <p>Помощь с подключением, настройкой и проблемами сети.</p>
+                <div class="price">от 300 ₽</div>
+            </div>
+
+            <div class="service">
+                <div class="icon">🖨️</div>
+                <h3>Принтер</h3>
+                <p>Подключение принтера и установка необходимых драйверов.</p>
+                <div class="price">от 300 ₽</div>
+            </div>
+
+            <div class="service">
+                <div class="icon">📦</div>
+                <h3>Установка программ</h3>
+                <p>Помогу установить нужные программы и выполнить базовую настройку.</p>
+                <div class="price">от 200 ₽</div>
+            </div>
 
         </div>
+    </div>
+</section>
 
-        <div class="stats">
+<section id="gallery">
+    <div class="container">
 
-          <div class="stat">
-            <strong>1+</strong>
-            <span>год опыта работы</span>
-          </div>
-
-          <div class="stat">
-            <strong>💻</strong>
-            <span>Игровые и рабочие ПК</span>
-          </div>
-
-          <div class="stat">
-            <strong>⚡</strong>
-            <span>Быстрая диагностика</span>
-          </div>
-
+        <div class="section-title">
+            <h2>Игровые ПК</h2>
+            <p>Примеры компьютерной техники</p>
         </div>
 
-      </div>
+        <div class="gallery">
 
-    </section>
+            <div class="gallery-card">
+                <img
+                    src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=900&q=85"
+                    alt="Игровой ПК с подсветкой"
+                    loading="lazy"
+                >
+                <div>
+                    <h3>Игровой компьютер</h3>
+                    <p>Сборка и настройка</p>
+                </div>
+            </div>
 
+            <div class="gallery-card">
+                <img
+                    src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=85"
+                    alt="Компьютерные комплектующие"
+                    loading="lazy"
+                >
+                <div>
+                    <h3>Комплектующие</h3>
+                    <p>Помощь с выбором деталей</p>
+                </div>
+            </div>
 
-    <!-- SERVICES -->
-
-    <section class="services" id="services">
-
-      <div class="container">
-
-        <h2 class="section-title">
-          Услуги и цены
-        </h2>
-
-        <p class="section-subtitle">
-          Доступные цены без лишних переплат
-        </p>
-
-        <div class="service-grid">
-
-          <div class="service-card">
-            <div class="service-icon">🧹</div>
-            <h3>Чистка ПК</h3>
-            <p>
-              Очистка компьютера от пыли и базовое обслуживание системы охлаждения.
-            </p>
-            <div class="price">от 500 ₽</div>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">🔧</div>
-            <h3>Диагностика</h3>
-            <p>
-              Поиск причины неисправности, тормозов, перегревов и других проблем.
-            </p>
-            <div class="price">от 300 ₽</div>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">🪟</div>
-            <h3>Установка Windows</h3>
-            <p>
-              Установка Windows и необходимых драйверов для нормальной работы ПК.
-            </p>
-            <div class="price">от 700 ₽</div>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">🚀</div>
-            <h3>Ускорение ПК</h3>
-            <p>
-              Оптимизация системы, автозагрузки и настроек для более быстрой работы.
-            </p>
-            <div class="price">от 500 ₽</div>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">🎮</div>
-            <h3>Настройка игрового ПК</h3>
-            <p>
-              Настройка Windows, драйверов и параметров для комфортной игры.
-            </p>
-            <div class="price">от 700 ₽</div>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">💾</div>
-            <h3>Апгрейд компьютера</h3>
-            <p>
-              Помощь с выбором и установкой SSD, ОЗУ, видеокарты и других компонентов.
-            </p>
-            <div class="price">от 500 ₽</div>
-          </div>
+            <div class="gallery-card">
+                <img
+                    src="https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=900&q=85"
+                    alt="Игровой компьютер"
+                    loading="lazy"
+                >
+                <div>
+                    <h3>Мощный ПК</h3>
+                    <p>Апгрейд и оптимизация</p>
+                </div>
+            </div>
 
         </div>
+    </div>
+</section>
 
-      </div>
+<section id="advantages">
+    <div class="container">
 
-    </section>
-
-
-    <!-- GALLERY -->
-
-    <section class="gallery" id="gallery">
-
-      <div class="container">
-
-        <h2 class="section-title">
-          Игровые компьютеры
-        </h2>
-
-        <p class="section-subtitle">
-          Примеры мощных игровых сборок
-        </p>
-
-        <div class="gallery-grid">
-
-          <div class="gallery-card">
-            <img
-              src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1200&q=80"
-              alt="Игровой компьютер"
-              loading="lazy"
-            >
-            <div class="gallery-label">
-              🎮 Игровой ПК
-            </div>
-          </div>
-
-          <div class="gallery-card">
-            <img
-              src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=900&q=80"
-              alt="Компьютер с подсветкой"
-              loading="lazy"
-            >
-            <div class="gallery-label">
-              💡 RGB-сборка
-            </div>
-          </div>
-
-          <div class="gallery-card">
-            <img
-              src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=900&q=80"
-              alt="Игровой компьютер на столе"
-              loading="lazy"
-            >
-            <div class="gallery-label">
-              🖥️ Рабочее место
-            </div>
-          </div>
-
-          <div class="gallery-card">
-            <img
-              src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=80"
-              alt="Комплектующие компьютера"
-              loading="lazy"
-            >
-            <div class="gallery-label">
-              ⚙️ Комплектующие
-            </div>
-          </div>
-
-          <div class="gallery-card">
-            <img
-              src="https://images.unsplash.com/photo-1547082299-de196ea013d6?auto=format&fit=crop&w=900&q=80"
-              alt="Компьютер"
-              loading="lazy"
-            >
-            <div class="gallery-label">
-              🔥 Мощная сборка
-            </div>
-          </div>
-
+        <div class="section-title">
+            <h2>Почему я?</h2>
+            <p>Просто, понятно и без лишней воды</p>
         </div>
 
-      </div>
+        <div class="advantages">
 
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section class="advantages" id="about">
-
-      <div class="container">
-
-        <h2 class="section-title">
-          Почему Demyan PC?
-        </h2>
-
-        <p class="section-subtitle">
-          Помогаю привести компьютер в порядок без ненужных услуг
-        </p>
-
-        <div class="advantages-grid">
-
-          <div class="advantage">
-
-            <div class="advantage-icon">⭐</div>
-
-            <div>
-              <h3>Опыт работы 1+ год</h3>
-              <p>
-                Работаю с компьютерами, комплектующими и настройкой Windows.
-              </p>
+            <div class="advantage">
+                <div class="big">💰</div>
+                <h3>Низкие цены</h3>
+                <p>Доступная стоимость услуг</p>
             </div>
 
-          </div>
-
-          <div class="advantage">
-
-            <div class="advantage-icon">💰</div>
-
-            <div>
-              <h3>Доступные цены</h3>
-              <p>
-                Стараюсь держать цены доступными и заранее объясняю стоимость работы.
-              </p>
+            <div class="advantage">
+                <div class="big">⚡</div>
+                <h3>Быстро</h3>
+                <p>Стараюсь не затягивать работу</p>
             </div>
 
-          </div>
-
-          <div class="advantage">
-
-            <div class="advantage-icon">🎮</div>
-
-            <div>
-              <h3>Игровые ПК</h3>
-              <p>
-                Помогу подобрать комплектующие и настроить компьютер для игр.
-              </p>
+            <div class="advantage">
+                <div class="big">🔧</div>
+                <h3>1+ год опыта</h3>
+                <p>Практический опыт работы с ПК</p>
             </div>
 
-          </div>
-
-          <div class="advantage">
-
-            <div class="advantage-icon">⚡</div>
-
-            <div>
-              <h3>Без лишнего</h3>
-              <p>
-                Сначала разбираемся с проблемой, а потом решаем, что действительно нужно делать.
-              </p>
+            <div class="advantage">
+                <div class="big">🎮</div>
+                <h3>Для геймеров</h3>
+                <p>Игровые ПК и настройка FPS</p>
             </div>
-
-          </div>
 
         </div>
+    </div>
+</section>
 
-      </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-
-    <section class="contact" id="contact">
-
-      <div class="container">
+<section id="contacts">
+    <div class="container">
 
         <div class="contact-box">
 
-          <h2>
-            Нужна помощь с ПК?
-          </h2>
+            <h2>Нужна помощь с ПК?</h2>
 
-          <p>
-            Позвони мне и расскажи, что случилось с компьютером.
-          </p>
+            <p>
+                Расскажи, что случилось с компьютером,
+                и обсудим, чем я могу помочь.
+            </p>
 
-          <a href="tel:+79094134741" class="phone">
-            +7 909 413-47-41
-          </a>
+            <a class="phone" href="tel:+79094134741">
+                +7 909 413-47-41
+            </a>
 
-          <a href="tel:+79094134741" class="btn btn-primary">
-            📞 Позвонить
-          </a>
+            <a class="btn btn-main" href="tel:+79094134741">
+                📞 Позвонить
+            </a>
+
+            <div class="contact-note">
+                Нажатие на кнопку откроет приложение телефона.
+            </div>
 
         </div>
 
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <footer>
-    <div class="container">
-      © 2026 Demyan PC Service · Ремонт и настройка компьютеров
     </div>
-  </footer>
+</section>
 
+</main>
+
+<footer>
+    <div class="container">
+        © 2026 Demyan PC Service · Ремонт и настройка компьютеров
+    </div>
+</footer>
 
 </body>
-    </html>
+  </html>
