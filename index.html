@@ -1,1761 +1,1077 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Demyan PC Service — Ремонт компьютеров</title>
-
-    <meta name="description"
-          content="Demyan PC Service — ремонт, чистка, настройка и обслуживание компьютеров. Волошино и рядом.">
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --bg: #020617;
-            --bg2: #06152d;
-            --card: rgba(8, 25, 52, 0.78);
-            --blue: #00aaff;
-            --blue2: #2563ff;
-            --purple: #a855f7;
-            --text: #f8fafc;
-            --muted: #94a3b8;
-            --border: rgba(0, 170, 255, 0.22);
-            --green: #00e676;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family:
-                Inter,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
-
-            color: var(--text);
-            background:
-                radial-gradient(circle at 80% 10%, rgba(0, 140, 255, 0.15), transparent 28%),
-                radial-gradient(circle at 20% 35%, rgba(125, 40, 255, 0.10), transparent 25%),
-                linear-gradient(180deg, #020617 0%, #03142d 45%, #020617 100%);
-
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background:
-                linear-gradient(
-                    rgba(255,255,255,0.015) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.015) 1px,
-                    transparent 1px
-                );
-            background-size: 45px 45px;
-            mask-image: linear-gradient(to bottom, black, transparent 90%);
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button,
-        input,
-        textarea,
-        select {
-            font: inherit;
-        }
-
-        .container {
-            width: min(1180px, calc(100% - 32px));
-            margin: 0 auto;
-        }
-
-        /* ================= HEADER ================= */
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-
-            background: rgba(2, 6, 23, 0.82);
-            backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .nav {
-            min-height: 82px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: -0.8px;
-        }
-
-        .logo span {
-            color: var(--blue);
-            text-shadow: 0 0 20px rgba(0,170,255,.45);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-        }
-
-        .nav-links a {
-            color: #cbd5e1;
-            font-weight: 600;
-            transition: .25s;
-        }
-
-        .nav-links a:hover {
-            color: var(--blue);
-        }
-
-        .menu-btn {
-            display: none;
-            width: 46px;
-            height: 46px;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            background: rgba(8, 25, 52, .8);
-            color: white;
-            cursor: pointer;
-            font-size: 25px;
-        }
-
-        /* ================= HERO ================= */
-
-        .hero {
-            position: relative;
-            padding: 80px 0 55px;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 520px;
-            height: 520px;
-            right: -180px;
-            top: 30px;
-
-            background: radial-gradient(
-                circle,
-                rgba(0, 145, 255, .23),
-                rgba(124, 58, 237, .10),
-                transparent 70%
-            );
-
-            filter: blur(10px);
-        }
-
-        .hero-grid {
-            position: relative;
-            display: grid;
-            grid-template-columns: 1.02fr .98fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .location {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-
-            padding: 10px 17px;
-            margin-bottom: 24px;
-
-            border: 1px solid rgba(0,170,255,.35);
-            border-radius: 999px;
-
-            background: rgba(0,130,255,.08);
-            color: #dbeafe;
-
-            font-weight: 700;
-            box-shadow: 0 0 30px rgba(0,140,255,.08);
-        }
-
-        .location b {
-            color: var(--blue);
-        }
-
-        h1 {
-            font-size: clamp(48px, 7vw, 88px);
-            line-height: .96;
-            letter-spacing: -4px;
-            font-weight: 950;
-            max-width: 700px;
-        }
-
-        h1 .gradient {
-            display: block;
-
-            background:
-                linear-gradient(
-                    100deg,
-                    #00aaff,
-                    #3b82f6 45%,
-                    #b24cff
-                );
-
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero-text {
-            margin-top: 28px;
-            max-width: 650px;
-
-            color: #9fb0c8;
-            font-size: 20px;
-            line-height: 1.75;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            margin-top: 32px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-
-            min-height: 58px;
-            padding: 0 27px;
-
-            border-radius: 17px;
-            border: 1px solid transparent;
-
-            font-weight: 850;
-            cursor: pointer;
-
-            transition:
-                transform .2s,
-                box-shadow .2s,
-                border-color .2s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-        }
-
-        .btn-main {
-            color: white;
-
-            background:
-                linear-gradient(
-                    100deg,
-                    #009cf7,
-                    #2563eb,
-                    #7c3aed
-                );
-
-            box-shadow:
-                0 12px 35px rgba(0,130,255,.22),
-                0 0 40px rgba(124,58,237,.10);
-        }
-
-        .btn-outline {
-            color: white;
-            background: rgba(5, 20, 42, .7);
-            border-color: rgba(0,170,255,.4);
-        }
-
-        /* ================= PC ILLUSTRATION ================= */
-
-        .pc-scene {
-            position: relative;
-            min-height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .pc-glow {
-            position: absolute;
-            width: 390px;
-            height: 390px;
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(0, 170, 255, .35),
-                    rgba(124, 58, 237, .18),
-                    transparent 70%
-                );
-
-            filter: blur(20px);
-        }
-
-        .pc {
-            position: relative;
-            width: 310px;
-            height: 410px;
-
-            border: 2px solid #172554;
-            border-radius: 24px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #111827,
-                    #020617 70%
-                );
-
-            box-shadow:
-                -20px 0 70px rgba(0,170,255,.18),
-                20px 0 70px rgba(124,58,237,.22),
-                inset 0 0 50px rgba(0,170,255,.06);
-
-            transform: perspective(900px) rotateY(-8deg);
-        }
-
-        .pc::before {
-            content: "";
-            position: absolute;
-            inset: 16px;
-
-            border-radius: 15px;
-            border: 1px solid rgba(0,170,255,.16);
-        }
-
-        .pc-glass {
-            position: absolute;
-            left: 25px;
-            top: 35px;
-            right: 25px;
-            bottom: 25px;
-
-            border-radius: 13px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0,170,255,.06),
-                    rgba(124,58,237,.10)
-                );
-
-            overflow: hidden;
-        }
-
-        .fan {
-            position: absolute;
-
-            width: 72px;
-            height: 72px;
-
-            border-radius: 50%;
-            border: 6px solid rgba(0,170,255,.8);
-
-            box-shadow:
-                0 0 25px #00aaff,
-                inset 0 0 20px rgba(168,85,247,.8);
-
-            animation: fanSpin 3s linear infinite;
-        }
-
-        .fan::before,
-        .fan::after {
-            content: "";
-            position: absolute;
-            inset: 12px;
-
-            border-radius: 50%;
-            border: 4px dashed #a855f7;
-        }
-
-        .fan::after {
-            inset: 27px;
-            border: 0;
-            background: #dbeafe;
-            box-shadow: 0 0 18px #fff;
-        }
-
-        .fan1 {
-            left: 38px;
-            top: 50px;
-        }
-
-        .fan2 {
-            right: 38px;
-            top: 50px;
-        }
-
-        .fan3 {
-            left: 38px;
-            bottom: 50px;
-        }
-
-        .gpu {
-            position: absolute;
-            left: 60px;
-            right: 60px;
-            top: 160px;
-            height: 75px;
-
-            border-radius: 10px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #0f172a,
-                    #172554,
-                    #0f172a
-                );
-
-            border: 2px solid rgba(0,170,255,.45);
-            box-shadow: 0 0 20px rgba(0,170,255,.25);
-        }
-
-        .gpu::after {
-            content: "RTX";
-            position: absolute;
-            right: 12px;
-            top: 27px;
-
-            color: #7dd3fc;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-
-        .ram {
-            position: absolute;
-            width: 10px;
-            height: 110px;
-            top: 142px;
-
-            border-radius: 8px;
-            background: linear-gradient(#00aaff, #a855f7);
-
-            box-shadow: 0 0 18px #00aaff;
-        }
-
-        .ram1 {
-            left: 35px;
-        }
-
-        .ram2 {
-            left: 49px;
-        }
-
-        @keyframes fanSpin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* ================= STATS ================= */
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-top: 35px;
-        }
-
-        .stat {
-            padding: 23px 15px;
-            text-align: center;
-
-            border-radius: 20px;
-            border: 1px solid rgba(0,170,255,.13);
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(10,31,62,.72),
-                    rgba(3,15,35,.82)
-                );
-
-            box-shadow: inset 0 0 30px rgba(0,170,255,.025);
-        }
-
-        .stat-icon {
-            font-size: 32px;
-            margin-bottom: 9px;
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 17px;
-        }
-
-        .stat span {
-            display: block;
-            margin-top: 5px;
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        /* ================= SECTION ================= */
-
-        section {
-            padding: 85px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 42px;
-        }
-
-        .eyebrow {
-            color: var(--blue);
-            font-size: 14px;
-            font-weight: 900;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .section-title h2 {
-            font-size: clamp(34px, 5vw, 52px);
-            letter-spacing: -2px;
-        }
-
-        .section-title p {
-            color: var(--muted);
-            margin-top: 12px;
-            font-size: 17px;
-        }
-
-        /* ================= SERVICES ================= */
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .service {
-            position: relative;
-            padding: 27px;
-
-            min-height: 245px;
-
-            border-radius: 23px;
-            border: 1px solid rgba(0,170,255,.13);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(10,31,63,.8),
-                    rgba(3,14,31,.9)
-                );
-
-            transition: .25s;
-            overflow: hidden;
-        }
-
-        .service::after {
-            content: "";
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            right: -80px;
-            bottom: -80px;
-
-            border-radius: 50%;
-            background: rgba(0,170,255,.12);
-            filter: blur(20px);
-        }
-
-        .service:hover {
-            transform: translateY(-6px);
-            border-color: rgba(0,170,255,.45);
-
-            box-shadow:
-                0 20px 45px rgba(0,0,0,.25),
-                0 0 30px rgba(0,170,255,.08);
-        }
-
-        .service-icon {
-            width: 55px;
-            height: 55px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 16px;
-            margin-bottom: 20px;
-
-            background: rgba(0,140,255,.09);
-            border: 1px solid rgba(0,170,255,.22);
-
-            font-size: 28px;
-        }
-
-        .service h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .service p {
-            color: var(--muted);
-            line-height: 1.6;
-            font-size: 15px;
-        }
-
-        .price {
-            margin-top: 20px;
-            color: #38bdf8;
-            font-size: 20px;
-            font-weight: 900;
-        }
-
-        /* ================= GALLERY ================= */
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .gallery-card {
-            min-height: 240px;
-            position: relative;
-            overflow: hidden;
-
-            border-radius: 24px;
-            border: 1px solid rgba(0,170,255,.18);
-
-            background:
-                radial-gradient(
-                    circle at 50% 35%,
-                    rgba(0,170,255,.35),
-                    transparent 30%
-                ),
-                linear-gradient(
-                    135deg,
-                    #08152c,
-                    #030712
-                );
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            box-shadow: inset 0 0 60px rgba(0,170,255,.08);
-        }
-
-        .gallery-card::before {
-            content: "";
-            position: absolute;
-            width: 150px;
-            height: 200px;
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #0f172a,
-                    #111827
-                );
-
-            border: 2px solid rgba(0,170,255,.5);
-
-            box-shadow:
-                0 0 35px rgba(0,170,255,.28),
-                inset 0 0 30px rgba(168,85,247,.12);
-
-            transform: skewY(-4deg);
-        }
-
-        .gallery-card::after {
-            content: "RGB";
-            position: absolute;
-
-            font-size: 34px;
-            font-weight: 950;
-            letter-spacing: 5px;
-
-            color: #60a5fa;
-            text-shadow:
-                0 0 15px #00aaff,
-                0 0 35px #a855f7;
-        }
-
-        .gallery-label {
-            position: absolute;
-            left: 18px;
-            bottom: 16px;
-
-            padding: 9px 13px;
-            border-radius: 12px;
-
-            background: rgba(2,6,23,.75);
-            backdrop-filter: blur(10px);
-
-            font-weight: 800;
-            z-index: 2;
-        }
-
-        /* ================= REVIEWS ================= */
-
-        .reviews-layout {
-            display: grid;
-            grid-template-columns: .8fr 1.2fr;
-            gap: 24px;
-            align-items: start;
-        }
-
-        .review-form,
-        .reviews-list {
-            padding: 28px;
-
-            border-radius: 24px;
-            border: 1px solid rgba(0,170,255,.16);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(8,28,58,.85),
-                    rgba(2,12,28,.9)
-                );
-        }
-
-        .review-form h3,
-        .reviews-list h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .field {
-            margin-bottom: 15px;
-        }
-
-        .field label {
-            display: block;
-            color: #cbd5e1;
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 7px;
-        }
-
-        .field input,
-        .field textarea,
-        .field select {
-            width: 100%;
-
-            border: 1px solid rgba(148,163,184,.18);
-            border-radius: 13px;
-
-            background: rgba(2,6,23,.7);
-            color: white;
-
-            outline: none;
-            padding: 13px 14px;
-
-            transition: .2s;
-        }
-
-        .field input:focus,
-        .field textarea:focus,
-        .field select:focus {
-            border-color: var(--blue);
-            box-shadow: 0 0 0 3px rgba(0,170,255,.08);
-        }
-
-        .field textarea {
-            min-height: 115px;
-            resize: vertical;
-        }
-
-        .review-submit {
-            width: 100%;
-            margin-top: 5px;
-        }
-
-        .review-note {
-            color: #64748b;
-            font-size: 12px;
-            line-height: 1.5;
-            margin-top: 12px;
-        }
-
-        .review-item {
-            padding: 19px 0;
-            border-bottom: 1px solid rgba(255,255,255,.07);
-        }
-
-        .review-item:first-child {
-            padding-top: 0;
-        }
-
-        .review-item:last-child {
-            border-bottom: 0;
-        }
-
-        .review-head {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .review-name {
-            font-weight: 900;
-        }
-
-        .stars {
-            color: #facc15;
-            letter-spacing: 2px;
-        }
-
-        .review-text {
-            color: #aebbd0;
-            line-height: 1.6;
-            margin-top: 8px;
-        }
-
-        .review-date {
-            color: #64748b;
-            font-size: 12px;
-            margin-top: 8px;
-        }
-
-        .empty-reviews {
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        /* ================= CONTACT ================= */
-
-        .contact-box {
-            position: relative;
-            overflow: hidden;
-
-            padding: 55px 35px;
-            text-align: center;
-
-            border-radius: 30px;
-            border: 1px solid rgba(0,170,255,.25);
-
-            background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(0,170,255,.17),
-                    transparent 45%
-                ),
-                rgba(5,18,39,.9);
-
-            box-shadow:
-                0 0 70px rgba(0,170,255,.06);
-        }
-
-        .contact-box h2 {
-            font-size: clamp(32px, 5vw, 50px);
-        }
-
-        .contact-box p {
-            max-width: 650px;
-            margin: 14px auto 25px;
-
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        .phone {
-            display: inline-block;
-
-            margin-bottom: 24px;
-
-            color: #7dd3fc;
-            font-size: 28px;
-            font-weight: 950;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            padding: 30px 0 45px;
-
-            border-top: 1px solid rgba(255,255,255,.06);
-
-            color: #64748b;
-            text-align: center;
-        }
-
-        footer strong {
-            color: #94a3b8;
-        }
-
-        /* ================= TOAST ================= */
-
-        .toast {
-            position: fixed;
-            z-index: 3000;
-
-            left: 50%;
-            bottom: 25px;
-
-            transform:
-                translate(-50%, 120px);
-
-            width: min(420px, calc(100% - 30px));
-
-            padding: 16px 20px;
-
-            border-radius: 16px;
-
-            background: rgba(15,23,42,.96);
-            border: 1px solid rgba(0,170,255,.3);
-
-            box-shadow: 0 15px 50px rgba(0,0,0,.4);
-
-            text-align: center;
-            font-weight: 700;
-
-            opacity: 0;
-            transition: .3s;
-        }
-
-        .toast.show {
-            transform: translate(-50%, 0);
-            opacity: 1;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media (max-width: 900px) {
-
-            .nav-links {
-                position: absolute;
-                left: 16px;
-                right: 16px;
-                top: 75px;
-
-                display: none;
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0;
-
-                padding: 10px;
-
-                border-radius: 18px;
-                background: rgba(2,6,23,.97);
-                border: 1px solid rgba(0,170,255,.18);
-
-                box-shadow: 0 20px 50px rgba(0,0,0,.4);
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 15px;
-                border-radius: 12px;
-            }
-
-            .nav-links a:hover {
-                background: rgba(0,170,255,.08);
-            }
-
-            .menu-btn {
-                display: block;
-            }
-
-            .hero {
-                padding-top: 50px;
-            }
-
-            .hero-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pc-scene {
-                min-height: 350px;
-            }
-
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .reviews-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            .container {
-                width: min(100% - 24px, 1180px);
-            }
-
-            .logo {
-                font-size: 20px;
-            }
-
-            h1 {
-                font-size: 53px;
-                letter-spacing: -2.5px;
-            }
-
-            .hero-text {
-                font-size: 17px;
-                line-height: 1.7;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .pc {
-                transform: scale(.82) perspective(900px) rotateY(-8deg);
-            }
-
-            .stats {
-                gap: 9px;
-            }
-
-            .stat {
-                padding: 18px 9px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 65px 0;
-            }
-
-            .review-form,
-            .reviews-list {
-                padding: 21px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050816">
+<meta name="description" content="Demyan PC Service — ремонт, обслуживание и настройка компьютеров.">
+<title>Demyan PC Service</title>
+
+<style>
+:root{
+    --bg:#030612;
+    --card:#0a1730;
+    --card2:#0d1e3d;
+    --blue:#00a8ff;
+    --blue2:#315dff;
+    --purple:#8b3dff;
+    --green:#00df8a;
+    --text:#fff;
+    --muted:#91a2bd;
+    --border:rgba(0,157,255,.2);
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 80% 10%,rgba(0,157,255,.13),transparent 30%),
+        radial-gradient(circle at 20% 50%,rgba(120,50,255,.08),transparent 30%),
+        var(--bg);
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(3,6,18,.88);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.nav{
+    max-width:1180px;
+    min-height:75px;
+    margin:auto;
+    padding:0 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+}
+
+.logo span{
+    color:var(--blue);
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+}
+
+.nav-links a{
+    color:#aebbd0;
+    font-size:14px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.menu{
+    display:none;
+    background:none;
+    border:0;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.hero{
+    max-width:1180px;
+    min-height:700px;
+    margin:auto;
+    padding:75px 22px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:35px;
+}
+
+.location{
+    display:inline-block;
+    padding:10px 16px;
+    border-radius:999px;
+    border:1px solid rgba(0,157,255,.4);
+    background:rgba(0,157,255,.07);
+    color:#b7dfff;
+    font-size:14px;
+    font-weight:800;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(48px,6vw,78px);
+    line-height:.97;
+    letter-spacing:-3px;
+    margin-bottom:28px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#00aaff,#426cff,#a13cff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero-text{
+    max-width:570px;
+    color:var(--muted);
+    font-size:20px;
+    line-height:1.6;
+    margin-bottom:32px;
+}
+
+.buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    min-height:56px;
+    padding:0 27px;
+    border-radius:16px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    font-weight:900;
+    border:1px solid transparent;
+    transition:.25s;
+    cursor:pointer;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.btn-main{
+    background:linear-gradient(110deg,#00a8ff,#315dff,#8742ff);
+    box-shadow:0 15px 40px rgba(0,130,255,.25);
+}
+
+.btn-outline{
+    border-color:rgba(0,157,255,.45);
+    background:rgba(5,17,36,.65);
+}
+
+.hero-image img{
+    width:100%;
+    height:520px;
+    object-fit:cover;
+    border-radius:28px;
+    box-shadow:0 30px 80px rgba(0,0,0,.55);
+}
+
+.stats{
+    max-width:1180px;
+    margin:0 auto 70px;
+    padding:0 22px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.stat{
+    padding:23px 15px;
+    text-align:center;
+    background:linear-gradient(145deg,#091831,#040d1d);
+    border:1px solid var(--border);
+    border-radius:20px;
+}
+
+.stat-icon{
+    font-size:29px;
+    margin-bottom:9px;
+}
+
+.stat strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:14px;
+}
+
+section{
+    max-width:1180px;
+    margin:auto;
+    padding:75px 22px;
+}
+
+.label{
+    text-align:center;
+    color:var(--blue);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:13px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.title{
+    text-align:center;
+    font-size:clamp(32px,5vw,48px);
+    margin-bottom:13px;
+}
+
+.subtitle{
+    max-width:650px;
+    margin:0 auto 42px;
+    text-align:center;
+    color:var(--muted);
+    line-height:1.6;
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+}
+
+.service{
+    padding:27px;
+    background:linear-gradient(145deg,#0a1b38,#040e1e);
+    border:1px solid var(--border);
+    border-radius:23px;
+    transition:.3s;
+}
+
+.service:hover{
+    transform:translateY(-5px);
+    border-color:rgba(0,157,255,.55);
+    box-shadow:0 20px 60px rgba(0,100,255,.12);
+}
+
+.icon{
+    width:57px;
+    height:57px;
+    display:grid;
+    place-items:center;
+    border-radius:16px;
+    background:rgba(0,157,255,.1);
+    font-size:29px;
+    margin-bottom:17px;
+}
+
+.service h3{
+    font-size:20px;
+    margin-bottom:9px;
+}
+
+.service p{
+    color:var(--muted);
+    line-height:1.55;
+}
+
+.price{
+    display:inline-block;
+    margin-top:14px;
+    color:var(--blue);
+    font-size:17px;
+    font-weight:900;
+}
+
+.free{
+    color:var(--green)!important;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    grid-auto-rows:230px;
+    gap:14px;
+}
+
+.pc{
+    position:relative;
+    overflow:hidden;
+    border-radius:23px;
+    border:1px solid var(--border);
+}
+
+.pc:first-child{
+    grid-row:span 2;
+}
+
+.pc img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.pc:hover img{
+    transform:scale(1.07);
+}
+
+.pc-text{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:22px;
+    background:linear-gradient(transparent,rgba(0,0,0,.9));
+}
+
+.pc-text span{
+    display:block;
+    color:#aebbd0;
+    font-size:13px;
+    margin-top:5px;
+}
+
+.advantages{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.advantage{
+    padding:29px;
+    background:linear-gradient(145deg,#0c1d3b,#050e20);
+    border:1px solid var(--border);
+    border-radius:23px;
+}
+
+.advantage-icon{
+    font-size:34px;
+    margin-bottom:16px;
+}
+
+.advantage h3{
+    margin-bottom:9px;
+}
+
+.advantage p{
+    color:var(--muted);
+    line-height:1.6;
+}
+
+.reviews{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.review{
+    padding:24px;
+    background:linear-gradient(145deg,#0b1b38,#050e20);
+    border:1px solid var(--border);
+    border-radius:22px;
+}
+
+.review-top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:14px;
+}
+
+.stars{
+    color:#ffc400;
+}
+
+.review-text{
+    color:#b2bfd2;
+    line-height:1.6;
+}
+
+.review-date{
+    color:#65758e;
+    font-size:12px;
+    margin-top:14px;
+}
+
+.contact{
+    text-align:center;
+    padding:60px 25px;
+    border-radius:30px;
+    background:
+        radial-gradient(circle at 50% 0%,rgba(0,157,255,.18),transparent 55%),
+        linear-gradient(145deg,#0a1d3b,#050d1d);
+    border:1px solid var(--border);
+}
+
+.contact h2{
+    font-size:clamp(30px,5vw,48px);
+    margin-bottom:14px;
+}
+
+.contact p{
+    color:var(--muted);
+    margin-bottom:26px;
+}
+
+.phone{
+    display:block;
+    margin-top:20px;
+    font-size:25px;
+    font-weight:900;
+}
+
+footer{
+    text-align:center;
+    color:#66758c;
+    padding:35px 22px 100px;
+    border-top:1px solid rgba(255,255,255,.06);
+}
+
+.mobile-menu{
+    display:none;
+    position:fixed;
+    z-index:999;
+    top:70px;
+    left:12px;
+    right:12px;
+    padding:15px;
+    background:rgba(4,10,23,.98);
+    border:1px solid var(--border);
+    border-radius:20px;
+}
+
+.mobile-menu.open{
+    display:block;
+}
+
+.mobile-menu a{
+    display:block;
+    padding:15px;
+    color:#c4cfdf;
+    font-weight:800;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.bottom-nav{
+    display:none;
+}
+
+@media(max-width:900px){
+
+    .hero{
+        grid-template-columns:1fr;
+        min-height:auto;
+    }
+
+    .hero-image{
+        order:-1;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .advantages,
+    .reviews{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .pc:first-child{
+        grid-column:span 2;
+        grid-row:span 1;
+    }
+}
+
+@media(max-width:700px){
+
+    .nav{
+        min-height:68px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .hero{
+        padding:40px 17px;
+    }
+
+    .hero h1{
+        font-size:49px;
+        letter-spacing:-2px;
+    }
+
+    .hero-text{
+        font-size:17px;
+    }
+
+    .hero-image img{
+        height:350px;
+    }
+
+    .buttons{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    section{
+        padding:60px 16px;
+    }
+
+    .stats{
+        padding:0 16px;
+    }
+
+    .services,
+    .advantages,
+    .reviews{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+        grid-auto-rows:230px;
+    }
+
+    .pc:first-child{
+        grid-column:auto;
+    }
+
+    .bottom-nav{
+        position:fixed;
+        z-index:1000;
+        left:10px;
+        right:10px;
+        bottom:10px;
+        display:grid;
+        grid-template-columns:repeat(4,1fr);
+        padding:9px 5px;
+        border-radius:20px;
+        background:rgba(4,10,24,.94);
+        backdrop-filter:blur(20px);
+        border:1px solid var(--border);
+    }
+
+    .bottom-nav a{
+        text-align:center;
+        color:#718098;
+        font-size:11px;
+        font-weight:800;
+    }
+
+    .bottom-nav span{
+        display:block;
+        font-size:21px;
+        margin-bottom:3px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <div class="container nav">
+    <div class="nav">
 
-        <a href="#top" class="logo">
+        <a class="logo" href="#home">
             DEMYAN <span>PC SERVICE</span>
         </a>
 
-        <button class="menu-btn"
-                id="menuBtn"
-                aria-label="Открыть меню">
-            ☰
-        </button>
-
-        <nav class="nav-links" id="navLinks">
+        <nav class="nav-links">
             <a href="#services">Услуги</a>
             <a href="#gallery">Игровые ПК</a>
             <a href="#reviews">Отзывы</a>
             <a href="#contacts">Контакты</a>
         </nav>
 
+        <button class="menu" id="menuBtn" aria-label="Меню">☰</button>
+
     </div>
 </header>
 
-<main id="top">
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#services">🛠 Услуги</a>
+    <a href="#gallery">🖥 Игровые ПК</a>
+    <a href="#reviews">⭐ Отзывы</a>
+    <a href="#contacts">📞 Контакты</a>
+</div>
 
-    <!-- HERO -->
+<main>
 
-    <section class="hero">
+<section class="hero" id="home">
 
-        <div class="container hero-grid">
+    <div>
 
-            <div>
-
-                <div class="location">
-                    📍 <b>Волошино</b> и рядом
-                </div>
-
-                <h1>
-                    Компьютер
-                    <br>
-                    должен
-                    <span class="gradient">работать.</span>
-                </h1>
-
-                <p class="hero-text">
-                    Ремонт, чистка, настройка и обслуживание компьютеров.
-                    Помогу разобраться с проблемой и привести ПК в порядок
-                    без ненужных услуг.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a
-                        class="btn btn-main"
-                        href="tel:+79094134741"
-                    >
-                        📞 Позвонить
-                    </a>
-
-                    <a
-                        class="btn btn-outline"
-                        href="#services"
-                    >
-                        Посмотреть услуги →
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="pc-scene">
-
-                <div class="pc-glow"></div>
-
-                <div class="pc">
-
-                    <div class="pc-glass">
-
-                        <div class="fan fan1"></div>
-                        <div class="fan fan2"></div>
-                        <div class="fan fan3"></div>
-
-                        <div class="ram ram1"></div>
-                        <div class="ram ram2"></div>
-
-                        <div class="gpu"></div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
+        <div class="location">
+            📍 Волошино и рядом
         </div>
 
-        <div class="container">
+        <h1>
+            Компьютер<br>
+            должен<br>
+            <span class="gradient">работать.</span>
+        </h1>
 
-            <div class="stats">
+        <p class="hero-text">
+            Ремонт, обслуживание, сборка и настройка
+            компьютеров. Помогу привести ПК в порядок
+            и решить проблемы с системой.
+        </p>
 
-                <div class="stat">
-                    <div class="stat-icon">🛡️</div>
-                    <strong>1+ год</strong>
-                    <span>опыта работы</span>
-                </div>
+        <div class="buttons">
 
-                <div class="stat">
-                    <div class="stat-icon">💳</div>
-                    <strong>Доступно</strong>
-                    <span>низкие цены</span>
-                </div>
+            <a class="btn btn-main" href="tel:+79094134741">
+                📞 Позвонить
+            </a>
 
-                <div class="stat">
-                    <div class="stat-icon">⚡</div>
-                    <strong>Быстро</strong>
-                    <span>решение проблем</span>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-icon">👍</div>
-                    <strong>Качественно</strong>
-                    <span>без лишнего</span>
-                </div>
-
-            </div>
+            <a class="btn btn-outline" href="#services">
+                Посмотреть услуги →
+            </a>
 
         </div>
-
-    </section>
-
-    <!-- SERVICES -->
-
-    <section id="services">
-
-        <div class="container">
-
-            <div class="section-title">
-                <div class="eyebrow">— УСЛУГИ —</div>
-                <h2>Что я могу сделать</h2>
-                <p>Качественно, быстро и по доступным ценам.</p>
-            </div>
-
-            <div class="services-grid">
-
-                <article class="service">
-                    <div class="service-icon">🧹</div>
-                    <h3>Чистка ПК</h3>
-                    <p>
-                        Удаление пыли и обслуживание системы охлаждения.
-                    </p>
-                    <div class="price">от 300 ₽</div>
-                </article>
-
-                <article class="service">
-                    <div class="service-icon">🌡️</div>
-                    <h3>Замена термопасты</h3>
-                    <p>
-                        Обслуживание процессора и улучшение охлаждения.
-                    </p>
-                    <div class="price">от 250 ₽</div>
-                </article>
-
-                <article class="service">
-                    <div class="service-icon">🪟</div>
-                    <h3>Установка Windows</h3>
-                    <p>
-                        Установка Windows и базовая настройка системы.
-                    </p>
-                    <div class="price">от 500 ₽</div>
-                </article>
-
-                <article class="service">
-                    <div class="service-icon">🚀</div>
-                    <h3>Ускорение ПК</h3>
-                    <p>
-                        Оптимизация Windows, автозагрузки и программ.
-                    </p>
-                    <div class="price">от 300 ₽</div>
-                </article>
-
-                <article class="service">
-                    <div class="service-icon">🔍</div>
-                    <h3>Диагностика</h3>
-                    <p>
-                        Поиск причины тормозов, перегрева и неисправностей.
-                    </p>
-                    <div class="price">от 250 ₽</div>
-                </article>
-
-                <article class="service">
-                    <div class="service-icon">🎮</div>
-                    <h3>Настройка игрового ПК</h3>
-                    <p>
-                        Настройка Windows, драйверов и параметров для игр.
-                    </p>
-                    <div class="price">от 400 ₽</div>
-                </article>
-
-                <article class="service">
-                    <div class="service-icon">🛡️</div>
-                    <h3>Установка антивируса</h3>
-                    <p>
-                        Установка и базовая настройка защиты компьютера.
-                    </p>
-                    <div class="price">от 200 ₽</div>
-                </article>
-
-                <article class="service">
-                    <div class="service-icon">📶</div>
-                    <h3>Настройка Wi-Fi</h3>
-                    <p>
-                        Подключение компьютера к Wi-Fi и настройка сети.
-                    </p>
-                    <div class="price">от 200 ₽</div>
-                </article>
-
-                <article class="service">
-                    <div class="service-icon">🔧</div>
-                    <h3>Установка драйверов</h3>
-                    <p>
-                        Установка необходимых драйверов после Windows.
-                    </p>
-                    <div class="price">от 200 ₽</div>
-                </article>
-
-                <article class="service">
-                    <div class="service-icon">💾</div>
-                    <h3>Перенос данных</h3>
-                    <p>
-                        Помощь с переносом файлов на другой накопитель.
-                    </p>
-                    <div class="price">от 300 ₽</div>
-                </article>
-
-                <article class="service">
-                    <div class="service-icon">⬆️</div>
-                    <h3>Апгрейд компьютера</h3>
-                    <p>
-                        Помощь с выбором и установкой комплектующих.
-                    </p>
-                    <div class="price">от 500 ₽</div>
-                </article>
-
-                <article class="service">
-                    <div class="service-icon">🎯</div>
-                    <h3>Настройка программ</h3>
-                    <p>
-                        Установка и настройка нужных программ и игр.
-                    </p>
-                    <div class="price">от 200 ₽</div>
-                </article>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- GAMING PC -->
-
-    <section id="gallery">
-
-        <div class="container">
-
-            <div class="section-title">
-                <div class="eyebrow">— GAMING PC —</div>
-                <h2>Игровые компьютеры</h2>
-                <p>Мощные сборки и современный RGB-стиль.</p>
-            </div>
-
-            <div class="gallery">
-
-                <div class="gallery-card">
-                    <div class="gallery-label">🎮 Игровой ПК</div>
-                </div>
-
-                <div class="gallery-card">
-                    <div class="gallery-label">💜 RGB-сборка</div>
-                </div>
-
-                <div class="gallery-card">
-                    <div class="gallery-label">🔥 Мощная сборка</div>
-                </div>
-
-                <div class="gallery-card">
-                    <div class="gallery-label">⚡ Производительный ПК</div>
-                </div>
-
-                <div class="gallery-card">
-                    <div class="gallery-label">🖥️ Компьютер для игр</div>
-                </div>
-
-                <div class="gallery-card">
-                    <div class="gallery-label">🚀 Gaming Setup</div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- REVIEWS -->
-
-    <section id="reviews">
-
-        <div class="container">
-
-            <div class="section-title">
-                <div class="eyebrow">— ОТЗЫВЫ —</div>
-                <h2>Что говорят клиенты</h2>
-                <p>
-                    Оставь свой отзыв о работе.
-                </p>
-            </div>
-
-            <div class="reviews-layout">
-
-                <form class="review-form" id="reviewForm">
-
-                    <h3>Оставить отзыв</h3>
-
-                    <div class="field">
-
-                        <label for="reviewName">
-                            Ваше имя
-                        </label>
-
-                        <input
-                            id="reviewName"
-                            type="text"
-                            maxlength="40"
-                            placeholder="Например: Артём"
-                            required
-                        >
-
-                    </div>
-
-                    <div class="field">
-
-                        <label for="reviewRating">
-                            Оценка
-                        </label>
-
-                        <select id="reviewRating" required>
-                            <option value="5">★★★★★ — Отлично</option>
-                            <option value="4">★★★★☆ — Хорошо</option>
-                            <option value="3">★★★☆☆ — Нормально</option>
-                            <option value="2">★★☆☆☆ — Плохо</option>
-                            <option value="1">★☆☆☆☆ — Очень плохо</option>
-                        </select>
-
-                    </div>
-
-                    <div class="field">
-
-                        <label for="reviewText">
-                            Отзыв
-                        </label>
-
-                        <textarea
-                            id="reviewText"
-                            maxlength="500"
-                            placeholder="Напишите, как вам работа..."
-                            required
-                        ></textarea>
-
-                    </div>
-
-                    <button
-                        class="btn btn-main review-submit"
-                        type="submit"
-                    >
-                        ⭐ Опубликовать отзыв
-                    </button>
-
-                    <p class="review-note">
-                        Отзыв сохраняется в браузере. Для общей базы отзывов
-                        на всех устройствах нужен сервер или база данных.
-                    </p>
-
-                </form>
-
-                <div class="reviews-list">
-
-                    <h3>Отзывы клиентов</h3>
-
-                    <div id="reviewsContainer">
-                        <!-- отзывы появятся здесь -->
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- CONTACT -->
-
-    <section id="contacts">
-
-        <div class="container">
-
-            <div class="contact-box">
-
-                <div class="eyebrow">— КОНТАКТЫ —</div>
-
-                <h2>Нужна помощь с ПК?</h2>
-
-                <p>
-                    Позвони и расскажи, что случилось с компьютером.
-                    Разберёмся с проблемой и решим её без лишних услуг.
-                </p>
-
-                <a
-                    class="phone"
-                    href="tel:+79094134741"
-                >
-                    +7 909 413-47-41
-                </a>
-
-                <br>
-
-                <a
-                    class="btn btn-main"
-                    href="tel:+79094134741"
-                >
-                    📞 Позвонить
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
-
-<footer>
-
-    <div class="container">
-
-        © 2026 <strong>Demyan PC Service</strong>
-        · Ремонт и настройка компьютеров
 
     </div>
 
+    <div class="hero-image">
+        <img
+            src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=90"
+            alt="Игровой компьютер"
+        >
+    </div>
+
+</section>
+
+
+<div class="stats">
+
+    <div class="stat">
+        <div class="stat-icon">🛡️</div>
+        <strong>1+ год</strong>
+        <span>опыта работы</span>
+    </div>
+
+    <div class="stat">
+        <div class="stat-icon">🔍</div>
+        <strong>Бесплатно</strong>
+        <span>диагностика ПК</span>
+    </div>
+
+    <div class="stat">
+        <div class="stat-icon">⚡</div>
+        <strong>Быстро</strong>
+        <span>решение проблем</span>
+    </div>
+
+    <div class="stat">
+        <div class="stat-icon">👍</div>
+        <strong>Качественно</strong>
+        <span>аккуратная работа</span>
+    </div>
+
+</div>
+
+
+<section id="services">
+
+    <div class="label">Услуги</div>
+
+    <h2 class="title">
+        Что я могу сделать
+    </h2>
+
+    <p class="subtitle">
+        Компьютерные услуги для дома, учёбы,
+        работы и игр.
+    </p>
+
+    <div class="services">
+
+        <article class="service">
+            <div class="icon">🧹</div>
+            <h3>Полная чистка от пыли</h3>
+            <p>Аккуратная очистка внутренних компонентов компьютера от пыли.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">❄️</div>
+            <h3>Чистка системы охлаждения</h3>
+            <p>Очистка вентиляторов, радиаторов и других элементов охлаждения.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">🌡️</div>
+            <h3>Замена термопасты</h3>
+            <p>Замена старой термопасты для улучшения охлаждения процессора.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">🔍</div>
+            <h3>Диагностика</h3>
+            <p>Поиск причины неисправности и проверка основных компонентов ПК.</p>
+            <span class="price free">БЕСПЛАТНО</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">🔧</div>
+            <h3>Замена комплектующих</h3>
+            <p>Замена неисправных или устаревших компонентов компьютера.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">🔥</div>
+            <h3>Пайка и ремонт плат</h3>
+            <p>Ремонт электронных плат и пайка компонентов.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">🖥️</div>
+            <h3>Сборка ПК с нуля</h3>
+            <p>Подбор и сборка компьютера из комплектующих под ваши задачи.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">❄️</div>
+            <h3>Установка и настройка системы охлаждения</h3>
+            <p>Установка и настройка воздушного или другого совместимого охлаждения.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">💿</div>
+            <h3>Установка Windows</h3>
+            <p>Установка операционной системы и базовая настройка компьютера.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">🛡️</div>
+            <h3>Установка антивируса + удаление вирусов</h3>
+            <p>Установка защитного ПО и проверка системы на вредоносные программы.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">📦</div>
+            <h3>Обновление и установка драйверов</h3>
+            <p>Установка необходимых драйверов и обновление устаревших версий.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">⚙️</div>
+            <h3>Установка и настройка программ</h3>
+            <p>Установка нужных программ и помощь с их первоначальной настройкой.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">🚀</div>
+            <h3>Оптимизация и ускорение системы</h3>
+            <p>Оптимизация Windows и настроек для более быстрой работы ПК.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">🧹</div>
+            <h3>Очистка памяти</h3>
+            <p>Освобождение места и удаление ненужных временных файлов.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+        <article class="service">
+            <div class="icon">🌐</div>
+            <h3>Создание сайта</h3>
+            <p>Создание простых современных сайтов для услуг, проектов и бизнеса.</p>
+            <span class="price">Цена договорная</span>
+        </article>
+
+    </div>
+
+</section>
+
+
+<section id="gallery">
+
+    <div class="label">Игровые ПК</div>
+
+    <h2 class="title">
+        Игровые сборки
+    </h2>
+
+    <p class="subtitle">
+        Современные компьютеры для игр,
+        работы и развлечений.
+    </p>
+
+    <div class="gallery">
+
+        <article class="pc">
+            <img
+                src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1200&q=90"
+                alt="RGB игровой компьютер"
+                loading="lazy"
+            >
+            <div class="pc-text">
+                <strong>RGB Gaming PC</strong>
+                <span>Мощная игровая сборка</span>
+            </div>
+        </article>
+
+        <article class="pc">
+            <img
+                src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=90"
+                alt="Игровой ПК"
+                loading="lazy"
+            >
+            <div class="pc-text">
+                <strong>Gaming Setup</strong>
+                <span>ПК для игр</span>
+            </div>
+        </article>
+
+        <article class="pc">
+            <img
+                src="https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=900&q=90"
+                alt="Компьютер с подсветкой"
+                loading="lazy"
+            >
+            <div class="pc-text">
+                <strong>Power PC</strong>
+                <span>Производительная система</span>
+            </div>
+        </article>
+
+        <article class="pc">
+            <img
+                src="https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2?auto=format&fit=crop&w=900&q=90"
+                alt="Игровое рабочее место"
+                loading="lazy"
+            >
+            <div class="pc-text">
+                <strong>Gaming Station</strong>
+                <span>ПК и монитор</span>
+            </div>
+        </article>
+
+        <article class="pc">
+            <img
+                src="https://images.unsplash.com/photo-1603481546238-487240415921?auto=format&fit=crop&w=900&q=90"
+                alt="Игровой компьютер"
+                loading="lazy"
+            >
+            <div class="pc-text">
+                <strong>PC Setup</strong>
+                <span>Современное рабочее место</span>
+            </div>
+        </article>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <div class="label">Почему я</div>
+
+    <h2 class="title">
+        Простой и честный подход
+    </h2>
+
+    <p class="subtitle">
+        Без ненужных услуг и непонятных накруток.
+    </p>
+
+    <div class="advantages">
+
+        <article class="advantage">
+            <div class="advantage-icon">💰</div>
+            <h3>Доступные цены</h3>
+            <p>
+                Стоимость работы можно обсудить
+                заранее в зависимости от задачи.
+            </p>
+        </article>
+
+        <article class="advantage">
+            <div class="advantage-icon">🔍</div>
+            <h3>Бесплатная диагностика</h3>
+            <p>
+                Сначала определяем причину проблемы,
+                затем решаем, что необходимо сделать.
+            </p>
+        </article>
+
+        <article class="advantage">
+            <div class="advantage-icon">⚡</div>
+            <h3>1+ год опыта</h3>
+            <p>
+                Опыт работы с компьютерами,
+                комплектующими и программным обеспечением.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<section id="reviews">
+
+    <div class="label">Отзывы</div>
+
+    <h2 class="title">
+        Отзывы клиентов
+    </h2>
+
+    <p class="subtitle">
+        Здесь можно размещать отзывы после выполненной работы.
+    </p>
+
+    <div class="reviews">
+
+        <article class="review">
+            <div class="review-top">
+                <strong>Клиент</strong>
+                <span class="stars">★★★★★</span>
+            </div>
+            <p class="review-text">
+                Место для отзыва клиента.
+            </p>
+        </article>
+
+        <article class="review">
+            <div class="review-top">
+                <strong>Клиент</strong>
+                <span class="stars">★★★★★</span>
+            </div>
+            <p class="review-text">
+                Здесь будут появляться отзывы.
+            </p>
+        </article>
+
+        <article class="review">
+            <div class="review-top">
+                <strong>Demyan PC Service</strong>
+                <span class="stars">★★★★★</span>
+            </div>
+            <p class="review-text">
+                Спасибо за доверие!
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<section id="contacts">
+
+    <div class="contact">
+
+        <h2>
+            Есть проблема с ПК?
+        </h2>
+
+        <p>
+            Позвони — разберёмся, что случилось.
+        </p>
+
+        <a class="btn btn-main" href="tel:+79094134741">
+            📞 Позвонить
+        </a>
+
+        <a class="phone" href="tel:+79094134741">
+            +7 909 413-47-41
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+    <strong>DEMYAN PC SERVICE</strong>
+    <br><br>
+    Ремонт, обслуживание и настройка компьютеров
+    <br><br>
+    © 2026 Demyan PC Service
 </footer>
 
-<div class="toast" id="toast"></div>
+
+<nav class="bottom-nav">
+
+    <a href="#home">
+        <span>⌂</span>
+        Главная
+    </a>
+
+    <a href="#services">
+        <span>▦</span>
+        Услуги
+    </a>
+
+    <a href="#gallery">
+        <span>🖥</span>
+        ПК
+    </a>
+
+    <a href="#contacts">
+        <span>📞</span>
+        Контакты
+    </a>
+
+</nav>
+
 
 <script>
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
 
-    /* ================= МЕНЮ ================= */
+menuBtn.addEventListener("click", function(){
+    mobileMenu.classList.toggle("open");
+});
 
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
-
-    menuBtn.addEventListener("click", function () {
-
-        navLinks.classList.toggle("open");
-
-        menuBtn.textContent =
-            navLinks.classList.contains("open")
-                ? "✕"
-                : "☰";
-
+document.querySelectorAll(".mobile-menu a").forEach(function(link){
+    link.addEventListener("click", function(){
+        mobileMenu.classList.remove("open");
     });
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            navLinks.classList.remove("open");
-            menuBtn.textContent = "☰";
-
-        });
-
-    });
-
-
-    /* ================= УВЕДОМЛЕНИЕ ================= */
-
-    const toast = document.getElementById("toast");
-
-    function showToast(message) {
-
-        toast.textContent = message;
-        toast.classList.add("show");
-
-        setTimeout(() => {
-            toast.classList.remove("show");
-        }, 2800);
-
-    }
-
-
-    /* ================= ОТЗЫВЫ ================= */
-
-    const reviewForm =
-        document.getElementById("reviewForm");
-
-    const reviewsContainer =
-        document.getElementById("reviewsContainer");
-
-    const STORAGE_KEY =
-        "demyan_pc_service_reviews";
-
-
-    function getReviews() {
-
-        try {
-
-            const saved =
-                localStorage.getItem(STORAGE_KEY);
-
-            return saved
-                ? JSON.parse(saved)
-                : [];
-
-        } catch (error) {
-
-            return [];
-
-        }
-
-    }
-
-
-    function saveReviews(reviews) {
-
-        localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(reviews)
-        );
-
-    }
-
-
-    function escapeHTML(text) {
-
-        const div =
-            document.createElement("div");
-
-        div.textContent = text;
-
-        return div.innerHTML;
-
-    }
-
-
-    function renderReviews() {
-
-        const reviews = getReviews();
-
-        if (reviews.length === 0) {
-
-            reviewsContainer.innerHTML = `
-                <div class="empty-reviews">
-                    Пока отзывов нет.
-                    Будьте первым — оставьте свой отзыв!
-                </div>
-            `;
-
-            return;
-
-        }
-
-
-        reviewsContainer.innerHTML =
-            reviews
-                .slice()
-                .reverse()
-                .map(review => {
-
-                    const stars =
-                        "★".repeat(review.rating) +
-                        "☆".repeat(5 - review.rating);
-
-                    return `
-                        <article class="review-item">
-
-                            <div class="review-head">
-
-                                <div class="review-name">
-                                    ${escapeHTML(review.name)}
-                                </div>
-
-                                <div class="stars">
-                                    ${stars}
-                                </div>
-
-                            </div>
-
-                            <div class="review-text">
-                                ${escapeHTML(review.text)}
-                            </div>
-
-                            <div class="review-date">
-                                ${escapeHTML(review.date)}
-                            </div>
-
-                        </article>
-                    `;
-
-                })
-                .join("");
-
-    }
-
-
-    reviewForm.addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-
-        const name =
-            document
-                .getElementById("reviewName")
-                .value
-                .trim();
-
-        const rating =
-            Number(
-                document
-                    .getElementById("reviewRating")
-                    .value
-            );
-
-        const text =
-            document
-                .getElementById("reviewText")
-                .value
-                .trim();
-
-
-        if (!name || !text) {
-
-            showToast("Заполни имя и текст отзыва.");
-
-            return;
-
-        }
-
-
-        const reviews = getReviews();
-
-
-        reviews.push({
-
-            name: name,
-
-            rating: rating,
-
-            text: text,
-
-            date:
-                new Date()
-                    .toLocaleDateString("ru-RU")
-
-        });
-
-
-        saveReviews(reviews);
-
-        renderReviews();
-
-        reviewForm.reset();
-
-        showToast("⭐ Спасибо! Отзыв добавлен.");
-
-    });
-
-
-    /* ================= ЗАПУСК ================= */
-
-    renderReviews();
-
+});
 </script>
 
 </body>
